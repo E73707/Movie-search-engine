@@ -38,41 +38,11 @@ p {
     font-size: 1rem;
 }
 
-#header {
-    margin: 10px 15px;
-    padding: 0px 10px;
-    display: flex;
-    align-items: center;
-}
-
-#site-logo {
-    margin-right: 10px;
-}
-
-#header-menu-container {
-    flex: 8 1 auto;
-    display: flex;
-    justify-content: flex-end;
-}
-
-#text-menu-container {
-    display: flex;
-    justify-content: space-evenly;
-    flex: 1 1 auto;
-    align-items: center;
-}
-
-#search-bar-container {
-    display: flex;
-    align-items: center;
-}
-
 #search-bar-input {
     border-radius: 15px;
     width: 40vw;
-    height: 28px;
-    padding-left: 20px;
-    margin-left: 10px;
+    height: 35px;
+    padding-left: 15px;
 }
 
 ::placeholder {
@@ -83,8 +53,8 @@ p {
 #search-button {
     border-radius: 10px;
     font-weight: 700;
-    width: 20%; /* to edit unit */
-    height: 30px;
+    width: 70px; /* to edit unit */
+    height: 35px;
     color: white;
     background: rgb(39,65,103);
     border: none;
@@ -97,4 +67,16 @@ p {
 
 #search-button:active {
     background: rgb(39 76 103)
+}
+
+#advanced-search-text, .header-menu {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin: 0px 0px 0px 20px;
+}
+
+#advanced-search-text:hover, .header-menu:hover {
+    text-decoration: underline;
+    color: white;
 }
