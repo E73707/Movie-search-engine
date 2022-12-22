@@ -98,3 +98,27 @@ p {
 #search-button:active {
     background: rgb(39 76 103)
 }
+
+#container-reviews {
+    margin-top: 100px;
+    margin-left: 100px;
+}
+
+#review-content {
+    width: 1000px;
+}
+
+#input-box-holder {
+    display: inline-block;
+    width: 500px;
+}
+
+.card {
+    margin-top: 20px;
+}
+
+.error-message {
+    font-size: 20px;
+    color: rgb(199, 35, 35);
+    font-style: italic;
+}

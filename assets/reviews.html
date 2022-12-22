@@ -5,37 +5,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <title>Document</title>
 </head>
 
-<body>
-
-    <div class="col-12 col-sm-6 col-md-4">
-        <h2>Check the reviews</h2>
-        <form>
-            <div class="form-group p-2">
-                <label for="name-input">Please enter a movie name:</label>
-                <input type="text" class="form-control" id="name-input" />
+<body id="body-reviews">
+    <header id="header">
+        <a id="site-logo" href="./index.html">
+            <img alt="website logo" width="120px" src="img/what-to-watch-logo.png">
+        </a>
+        <div id="header-menu-container">
+            <div id="text-menu-container">
+                <h4>Menu</h4>
+                <h4>Menu</h4>
+                <h4>Menu</h4>
+                <h4>Menu</h4>
             </div>
-            <button type="button" class="btn btn-primary" id="review-search-btn">Search</button>
-        </form>
+            <div id="search-bar-container">
+                <input id="search-bar-input" type="text" placeholder="Search..">
+                <button id="search-button">Search</button>
+            </div>
+        </div>
+    </header>
+
+    <div id="container-reviews">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-12">
+            <h2>Check the reviews</h2>
+            <form>
+                <div class="form-group p-2" id="input-box-holder">
+                    <input type="text" class="form-control" id="name-input" placeholder="Please enter a movie name" />
+                </div>
+                <button type="button" class="btn btn-primary" id="review-search-btn">Search</button>
+            </form>
+        </div>
+        <div id="review-content"></div>
     </div>
-    <ul id="review-content"></ul>
-    <nav aria-label="Search-results-pages">
-        <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-        </ul>
-    </nav>
-
-
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
