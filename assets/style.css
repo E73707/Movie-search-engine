@@ -1,0 +1,100 @@
+* {
+    margin: 0px;
+    font-family: 'Lato', 'Trebuchet MS', Helvetica, sans-serif; /* to test again */
+}
+
+body {
+    margin-top: 15px;
+    background-image: url('./img/woman-lying-in-bed-and-watching-TV.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* background-position: relative; */
+    /* background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: overlay; */
+}
+
+h1, h2, h3, h4, p {
+    color: white;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.75rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+h4 {
+    font-size: 1.25rem;
+    font-weight: 400;
+}
+
+p {
+    font-size: 1rem;
+}
+
+#header {
+    margin: 10px 15px;
+    padding: 0px 10px;
+    display: flex;
+    align-items: center;
+}
+
+#site-logo {
+    margin-right: 10px;
+}
+
+#header-menu-container {
+    flex: 8 1 auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#text-menu-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex: 1 1 auto;
+    align-items: center;
+}
+
+#search-bar-container {
+    display: flex;
+    align-items: center;
+}
+
+#search-bar-input {
+    border-radius: 15px;
+    width: 40vw;
+    height: 28px;
+    padding-left: 20px;
+    margin-left: 10px;
+}
+
+::placeholder {
+    font-size: 1rem;
+    align-items: center;
+  }
+
+#search-button {
+    border-radius: 10px;
+    font-weight: 700;
+    width: 20%; /* to edit unit */
+    height: 30px;
+    color: white;
+    background: rgb(39,65,103);
+    border: none;
+    margin-left: 10px;
+}
+
+#search-button:hover {
+    border: 1px solid white; /* personally don't really like the hover effect as it's too abrupt */
+}
+
+#search-button:active {
+    background: rgb(39 76 103)
+}
