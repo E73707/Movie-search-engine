@@ -122,3 +122,8 @@ p {
     color: rgb(199, 35, 35);
     font-style: italic;
 }
+
+#form-reviews{
+    display: flex;
+    align-items: center;
+}
