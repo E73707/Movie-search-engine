@@ -11,7 +11,6 @@ var runtime=document.querySelector('#runtime')
 
 //add autocomplete to input box while key in movie's name for search
 input.keyup(function () {
-  console.log(input.val());
   var movieName = input.val();
   if (movieName != "") {
     var availableNames = [];
@@ -22,12 +21,10 @@ input.keyup(function () {
         return response.json();
       })
       .then(function (data) {
-        console.log(data);
         for (var i = 0; i < data.results.length; i++) {
           var movieTitle = data.results[i].title;
           availableNames.push(movieTitle);
         }
-        console.log(availableNames);
         input.autocomplete({
           source: availableNames,
         });
@@ -68,12 +65,10 @@ function getReviews() {
                 var movieImgUrl = 'https://image.tmdb.org/t/p/w500/' + data.poster_path;
                 moviePoster.setAttribute("src", movieImgUrl);
                 moviePoster.setAttribute("alt", data.title);
-                console.log(moviePoster);
                 posterContainer.appendChild(moviePoster);
                 movieTitle.textContent = data.title;
                 movieOverview.textContent = "Overview: " + data.overview;
-                releaseDate.textContent = "Release date: " + data.release_date;
-                runtime.textContent="Duration: " + data.runtime + "mins";
+                releaseDate.textContent = "Release date: " + data.release_date + " | Duration: " + data.runtime + "mins"+" | Rating: "+data.vote_average;
             })
         fetch(data[0])
           .then(function (response) {
