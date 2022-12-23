@@ -108,3 +108,35 @@ p {
     text-decoration: underline;
     color: white;
 }
+
+#movie-poster{
+    max-width: 200px;
+}
+
+.card-text{
+    
+    color: black;
+}
+
+#movie-info{
+    display:none;
+}
+
+.text-muted{
+    font-size: 15px;
+    color: rgb(216, 221, 221);
+    line-height: 10px;
+}
+
+#movie-title{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.card-body{
+    margin-left: 0px;
+}
+
+#poster-container{
+    max-width: 220px;
+}
