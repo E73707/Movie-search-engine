@@ -7,7 +7,7 @@ var moviePoster = document.querySelector('#movie-poster');
 var movieTitle = document.querySelector('#movie-title');
 var movieOverview = document.querySelector('#movie-overview');
 var releaseDate = document.querySelector('#release-date');
-var runtime=document.querySelector('#runtime')
+var cast = document.querySelector('#cast');
 
 //add autocomplete to input box while key in movie's name for search
 input.keyup(function () {
@@ -47,8 +47,10 @@ function getReviews() {
       var movieId = data.results[0].id;
       var reviewUrl ="https://api.themoviedb.org/3/movie/" + movieId + "/reviews?api_key=b3d061705cb162c0d2c4c93862143c72&language=en-US";
       var movieInfoUrl = "https://api.themoviedb.org/3/movie/" + movieId + "?api_key=b3d061705cb162c0d2c4c93862143c72&language=en-US";
+      var castUrl ="https://api.themoviedb.org/3/movie/"+movieId+"/credits?api_key=b3d061705cb162c0d2c4c93862143c72";
       urlArray.push(reviewUrl);
       urlArray.push(movieInfoUrl);
+      urlArray.push(castUrl);
       return urlArray;
     })
     .then(function (data) {  
@@ -69,6 +71,17 @@ function getReviews() {
                 movieTitle.textContent = data.title;
                 movieOverview.textContent = "Overview: " + data.overview;
                 releaseDate.textContent = "Release date: " + data.release_date + " | Duration: " + data.runtime + "mins"+" | Rating: "+data.vote_average;
+            })
+        fetch(data[2])
+            .then(function (response) { 
+                return response.json();
+            })
+            .then(function (data) { 
+                var castList = "";
+                for (var i = 0; i < 3; i++) { 
+                    castList = castList + data.cast[i].name+" | ";
+                }
+                cast.textContent ="Cast: "+castList;
             })
         fetch(data[0])
           .then(function (response) {
@@ -107,8 +120,23 @@ function getReady() {
     movieTitle.textContent = "";
     movieOverview.textContent = "";
     releaseDate.textContent = "";
-    runtime.textContent = "";
+    cast.textContent = "";
 }
+
+function getCast() { 
+    fetch(
+      "https://api.themoviedb.org/3/movie/671/credits?api_key=b3d061705cb162c0d2c4c93862143c72"
+    )
+        .then(function (response) { 
+            console.log(response);
+            return response.json();
+        })
+        .then(function (data) { 
+            console.log(data);
+        }
+            );
+}
+getCast();
 
 //click event for the search button to the the reviews
 btn.addEventListener("click", getReviews);
