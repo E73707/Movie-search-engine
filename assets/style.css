@@ -69,6 +69,7 @@ p {
     background: rgb(39 76 103)
 }
 
+
 #advanced-search-text, .header-menu {
     color: white;
     text-decoration: none;
@@ -79,4 +80,74 @@ p {
 #advanced-search-text:hover, .header-menu:hover {
     text-decoration: underline;
     color: white;
+}
+
+#container-reviews {
+    margin-top: 100px;
+    margin-left: 100px;
+}
+
+#review-content {
+    width: 1000px;
+}
+
+#input-box-holder {
+    display: inline-block;
+    width: 500px;
+}
+
+.card {
+    margin-top: 20px;
+}
+
+.error-message {
+    font-size: 20px;
+    color: rgb(199, 35, 35);
+    font-style: italic;
+}
+
+#form-reviews {
+    display: flex;
+    align-items: center;
+}
+
+#movie-poster{
+    max-width: 200px;
+}
+
+.card-text{
+    
+    color: black;
+}
+
+#movie-info{
+    display:none;
+    /* background-color: rgb(202, 216, 230); */
+}
+
+#release-date{
+    font-size: 15px;
+    color: rgb(216, 221, 221);
+    line-height: 10px;
+}
+
+#movie-title{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.card-body{
+    margin-left: 0px;
+}
+
+#poster-container{
+    max-width: 220px;
+}
+
+#cast{
+    color: black;
+}
+
+.card-review{
+    background-color: rgb(237, 245, 248)!important;
 }
