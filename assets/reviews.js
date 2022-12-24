@@ -79,9 +79,10 @@ function getReviews() {
             .then(function (data) { 
                 var castList = "";
                 for (var i = 0; i < 3; i++) { 
-                    castList = castList + data.cast[i].name+" | ";
+                    castList = castList + data.cast[i].name+", ";
                 }
-                cast.textContent ="Cast: "+castList;
+                castList = castList + data.cast[3].name;
+                cast.textContent ="Starring: "+castList;
             })
         fetch(data[0])
           .then(function (response) {
@@ -101,9 +102,9 @@ function getReviews() {
                 var cardBody = document.createElement("div");
                 cardHeader.textContent ="By " +data.results[i].author +" posted at: " +data.results[i].updated_at.split("T")[0];
                 cardBody.textContent = data.results[i].content;
-                card.setAttribute("class", "card");
+                card.classList.add("card", "card-review");
                 cardHeader.classList.add("card-header");
-                cardBody.classList.add("card-body","border-dark","bg-light","mb-3");
+                cardBody.classList.add("card-body","border-dark","bg-light","mb-3","card-review");
                 content.appendChild(card);
                 card.appendChild(cardHeader);
                 card.appendChild(cardBody);

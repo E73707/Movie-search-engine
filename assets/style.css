@@ -69,6 +69,19 @@ p {
     background: rgb(39 76 103)
 }
 
+
+#advanced-search-text, .header-menu {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin: 0px 0px 0px 20px;
+}
+
+#advanced-search-text:hover, .header-menu:hover {
+    text-decoration: underline;
+    color: white;
+}
+
 #container-reviews {
     margin-top: 100px;
     margin-left: 100px;
@@ -93,20 +106,9 @@ p {
     font-style: italic;
 }
 
-#form-reviews{
+#form-reviews {
     display: flex;
     align-items: center;
-}
-#advanced-search-text, .header-menu {
-    color: white;
-    text-decoration: none;
-    font-size: 0.9rem;
-    margin: 0px 0px 0px 20px;
-}
-
-#advanced-search-text:hover, .header-menu:hover {
-    text-decoration: underline;
-    color: white;
 }
 
 #movie-poster{
@@ -120,9 +122,10 @@ p {
 
 #movie-info{
     display:none;
+    /* background-color: rgb(202, 216, 230); */
 }
 
-.text-muted{
+#release-date{
     font-size: 15px;
     color: rgb(216, 221, 221);
     line-height: 10px;
@@ -139,4 +142,12 @@ p {
 
 #poster-container{
     max-width: 220px;
+}
+
+#cast{
+    color: black;
+}
+
+.card-review{
+    background-color: rgb(237, 245, 248)!important;
 }
