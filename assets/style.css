@@ -1,0 +1,98 @@
+* {
+    margin: 0px;
+    font-family: 'Lato', 'Trebuchet MS', Helvetica, sans-serif; /* to test again */
+}
+
+body {
+    margin-top: 15px;
+    background-image: url('./img/woman-lying-in-bed-and-watching-TV.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+h1, h2, h3, h4, p {
+    color: white;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.75rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+h4 {
+    font-size: 1.25rem;
+    font-weight: 400;
+}
+
+p {
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
+#search-button, #advanced-search-btn {
+    border-radius: 10px;
+    font-weight: 700;
+    width: 70px; /* to edit unit */
+    height: 100%;
+    color: white;
+    background: #1E87D2;
+    border: none;
+}
+
+#advanced-search-btn {
+    width: fit-content;
+    padding: 0px 10px;
+    margin-top: 5px;
+    background: #C2883D;
+}
+
+#search-button:hover {
+    border: 1px solid white; /* personally don't really like the hover effect as it's too abrupt */
+}
+
+#search-button:active {
+    background: rgb(39 76 103)
+}
+
+#advanced-search-text, .text-link {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+#advanced-search-text:hover, .text-link:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+.filter-btn, .filter-option-btn {
+    padding: 5px 10px;
+    border-radius: 12px;
+    border: none;
+    background: chocolate;
+    color: white;
+}
+
+.filter-btn:hover, .filter-option-btn:hover {
+    background: #E4843F;
+}
+
+.filter-option-btn {
+    background: none;
+    border: 1.5px solid chocolate;
+}
+
+.navbar-toggler-icon {
+    background-image: url('./img/white-hamburger-btn.png');
+}
+
+#navbar-toggler-border-color {
+    border-color: white;
+}

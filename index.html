@@ -1,12 +1,128 @@
-<!-- Main Page -->
-
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script src="./assets/script.js"></script>
-  </head>
-  <body></body>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link href="./assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/style.css">
+  </link>
+</head>
+
+<body>
+  <div id="nav-bar" class="container-fluid">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img alt="website logo" width="120px" src="./assets/img/what-to-watch-logo.png">
+        </a>
+        <button class="navbar-toggler text-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item mx-lg-3">
+              <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item mx-lg-3">
+              <a class="nav-link text-white" href="#">Menu</a>
+            </li>
+            <li class="nav-item mx-lg-3 dropdown">
+              <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div>
+            <a href="#search" data-bs-toggle="modal" data-bs-target="#searchModal">
+              <img src="assets/img/magnifying-glass.png" height="20px" alt="">
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- This row is where the search results should appear -->
+  <div class="container-fluid mt-4">
+    <div class="row">
+      <div class="col-12 d-flex flex-wrap">
+        <!-- Below is the HTML card elements to insert with JavaScript -->
+        <!-- <div class="card mx-3 my-3 bg-dark" style="width: 18rem;">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Movie title</h5>
+            <p class="card-text my-1">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary mt-2">Go somewhere</a>
+          </div>
+        </div>
+        <div class="card mx-3 my-3 bg-dark" style="width: 18rem;">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Movie title</h5>
+            <p class="card-text my-1">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary mt-2">Go somewhere</a>
+          </div>
+        </div>
+        <div class="card mx-3 my-3 bg-dark" style="width: 18rem;">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Movie title</h5>
+            <p class="card-text my-1">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary mt-2">Go somewhere</a>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <!-- Filter Box Modal -->
+  <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-transparent">
+        <div class="row mb-2">
+          <div class="col-9 px-0">
+            <input type="text" class="form-control">
+          </div>
+          <div class="col-3">
+            <button id="search-button">Search</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 px-1">
+            <a id="advanced-search-text" href="#advanced-filters-container" class="m-0">
+              <p>Advanced Search</p>
+            </a>
+          </div>
+        </div>
+        <div id="add-filter-container" class="row d-none">
+          <div id="filter-render-box" class="col-12 py-2">
+            <!-- to render filter box -->
+            <!-- To decide on filter options -->
+            <!-- To generate option button from an array in JavaScript -->
+          </div>
+          <div class="col-12">
+            <a href="#filter" id="add-filter-text-link" class="text-link">+ Add more filter</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
 </html>
+<script src="./assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="./assets/script.js"></script>
