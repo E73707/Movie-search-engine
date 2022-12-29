@@ -1,11 +1,70 @@
-<!-- Top 10 -->
-
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body></body>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css"></link>
+</head>
+
+<body>
+  <div id="nav-bar" class="container-fluid">
+    <div class="row align-items-center mx-1">
+      <div class="col-12 col-xl-1">
+        <a href="./index.html">
+          <img alt="website logo" width="120px" src="./img/what-to-watch-logo.png">
+        </a>
+      </div>
+      <div class="col-12 col-xl-4 d-flex justify-content-evenly">
+        <a class="header-menu" href="#dropdown-1"><h4>Menu</h4></a>
+        <a class="header-menu" href="#dropdown-2"><h4>Menu</h4></a>
+        <a class="header-menu" href="#dropdown-3"><h4>Menu</h4></a>
+      </div>
+      <div class="col-12 col-xl-7"> <!-- is there a way to make sure that this div is aligned right? -->
+        <input id="search-bar-input" type="text" placeholder="Search..">
+          <button id="search-button">Search</button>
+          <a id="advanced-search-text" data-bs-toggle="collapse" href="#movie-filters-container">
+            Advanced Search
+          </a>
+      </div>
+    </div>
+  </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-5">
+
+    </div>
+    <div class="col-7">
+    <!-- to insert advanced search collapse element here upon Advanced Search link click -->
+    </div>
+  </div>
+</div>
+  <!-- <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <a href="#link" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample">Link</a>
+        <div style="min-height: 120px;">
+          <div class="collapse collapse-horizontal" id="collapseWidthExample">
+            <div class="card card-body" style="width: 300px;">
+              This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <section id="container">
+    
+  </section>
+  <script src="./top-10.js"></script>
+</body>
+
 </html>
+

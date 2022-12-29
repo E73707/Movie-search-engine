@@ -1,82 +1,123 @@
 * {
-    margin: 0px;
-    font-family: 'Lato', 'Trebuchet MS', Helvetica, sans-serif; /* to test again */
+  margin: 0px;
+  font-family: "Lato", "Trebuchet MS", Helvetica, sans-serif; /* to test again */
 }
 
 body {
-    margin-top: 15px;
-    background-image: url('./img/woman-lying-in-bed-and-watching-TV.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    /* background-position: relative; */
-    /* background-color: rgba(0, 0, 0, 0.5);
+  margin-top: 15px;
+  background-image: url("./img/woman-lying-in-bed-and-watching-TV.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background-position: relative; */
+  /* background-color: rgba(0, 0, 0, 0.5);
     background-blend-mode: overlay; */
 }
 
-h1, h2, h3, h4, p {
-    color: white;
+h1,
+h2,
+h3,
+h4,
+p {
+  color: white;
 }
 
 h1 {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 h2 {
-    font-size: 1.75rem;
+  font-size: 1.75rem;
 }
 
 h3 {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 h4 {
-    font-size: 1.25rem;
-    font-weight: 400;
+  font-size: 1.25rem;
+  font-weight: 400;
 }
 
 p {
-    font-size: 1rem;
+  font-size: 1rem;
 }
 
 #search-bar-input {
-    border-radius: 15px;
-    width: 40vw;
-    height: 35px;
-    padding-left: 15px;
+  border-radius: 15px;
+  width: 40vw;
+  height: 35px;
+  padding-left: 15px;
 }
 
 ::placeholder {
-    font-size: 1rem;
-    align-items: center;
-  }
+  font-size: 1rem;
+  align-items: center;
+}
 
 #search-button {
-    border-radius: 10px;
-    font-weight: 700;
-    width: 70px; /* to edit unit */
-    height: 35px;
-    color: white;
-    background: rgb(39,65,103);
-    border: none;
-    margin-left: 10px;
+  border-radius: 10px;
+  font-weight: 700;
+  width: 70px; /* to edit unit */
+  height: 35px;
+  color: white;
+  background: rgb(39, 65, 103);
+  border: none;
+  margin-left: 10px;
 }
 
 #search-button:hover {
-    border: 1px solid white; /* personally don't really like the hover effect as it's too abrupt */
+  border: 1px solid white; /* personally don't really like the hover effect as it's too abrupt */
 }
 
 #search-button:active {
-    background: rgb(39 76 103)
+  background: rgb(39 76 103);
 }
 
-#advanced-search-text, .header-menu {
-    color: white;
-    text-decoration: none;
-    font-size: 0.9rem;
-    margin: 0px 0px 0px 20px;
+#advanced-search-text,
+.header-menu {
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin: 0px 0px 0px 20px;
 }
 
-#advanced-search-text:hover, .header-menu:hover {
-    text-decoration: underline;
-    color: white;
+#advanced-search-text:hover,
+.header-menu:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+.card {
+  padding: 0px;
+  text-align: center;
+  float: left;
+  width: 40%;
+  margin: 10px;
+  margin-top: 40px;
+}
+
+@media screen and (max-width: 600px) {
+  .card {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .card {
+    width: 20%;
+    margin-bottom: 20px;
+  }
+}
+
+#container {
+  align-self: center;
+  margin: 50px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-weight: 700;
 }
