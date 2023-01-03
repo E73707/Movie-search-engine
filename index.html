@@ -10,57 +10,144 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <link href="./assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/style.css"></link>
+  <link rel="stylesheet" href="./assets/style.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  
 </head>
 
 <body>
   <div id="nav-bar" class="container-fluid">
-    <div class="row align-items-center mx-1">
-      <div class="col-12 col-xl-1">
-        <a href="./index.html">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
           <img alt="website logo" width="120px" src="./assets/img/what-to-watch-logo.png">
         </a>
+        <button class="navbar-toggler text-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item mx-lg-3">
+              <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item mx-lg-3">
+              <a class="nav-link text-white" href="#">Menu</a>
+            </li>
+            <li class="nav-item mx-lg-3 dropdown">
+              <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div>
+            <a href="#search" data-bs-toggle="modal" data-bs-target="#searchModal">
+              <img src="assets/img/magnifying-glass.png" height="20px" alt="">
+            </a>
+          </div>
+        </div>
       </div>
-      <div class="col-12 col-xl-4 d-flex justify-content-evenly">
-        <a class="header-menu" href="#dropdown-1"><h4>Menu</h4></a>
-        <a class="header-menu" href="#dropdown-2"><h4>Menu</h4></a>
-        <a class="header-menu" href="#dropdown-3"><h4>Menu</h4></a>
-      </div>
-      <div class="col-12 col-xl-7"> <!-- is there a way to make sure that this div is aligned right? -->
-        <input id="search-bar-input" type="text" placeholder="Search..">
-          <button id="search-button">Search</button>
-          <a id="advanced-search-text" data-bs-toggle="collapse" href="#movie-filters-container">
-            Advanced Search
-          </a>
-      </div>
-    </div>
+    </nav>
   </div>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-5">
-
-    </div>
-    <div class="col-7">
-    <!-- to insert advanced search collapse element here upon Advanced Search link click -->
-      
-    </div>
-  </div>
-</div>
-  <!-- <div class="container-fluid">
-    <div class="row">
-      <div class="col-12">
-        <a href="#link" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample">Link</a>
-        <div style="min-height: 120px;">
-          <div class="collapse collapse-horizontal" id="collapseWidthExample">
-            <div class="card card-body" style="width: 300px;">
-              This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
+  <!-- Search Modal -->
+  <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-transparent">
+        <div class="row mb-2">
+          <div class="col-9 px-0">
+            <input type="text" id="keyword-search-input" class="form-control">
+          </div>
+          <div class="col-3">
+              <button id="search-button">Search</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 px-1">
+            <a id="advanced-search-text" href="#advanced-filters-container" class="m-0">
+              <p>Advanced Search</p>
+            </a>
+          </div>
+        </div>
+        <!-- Advanced Search Filter -->
+        <div id="add-filter-container" class="row d-none">
+          <div id="filter-render-box" class="col-12 py-2">
+            <div class="row">
+              <div class="col-12">
+                <h5>Genre: </h5>
+              </div>
+              <div id="genre-selection-btn" class="d-flex flex-wrap col-12 mt-2">
+                
+              </div>
+            </div>
+            <div class="row align-items-end">
+              <div class="col-4">
+                <h5 class="mb-0">Duration: </h5>
+              </div>
+              <div class="col-8">
+                <p id="duration-label" class="text-white text-end my-2">90-180 min</p>
+                <div id="duration-slider-range"></div>
+              </div>
+            </div>
+            <div class="row align-items-end my-3">
+              <div class="col-4">
+                <h5 class="mb-0">User Ratings: </h5>
+              </div>
+              <div class="col-8">
+                <p id="user-rating-label" class="text-white text-end my-2">8 to 10</p>
+                <div id="user-rating-slider-range"></div>
+              </div>
+            </div>
+            <div class="row align-items-end my-3">
+              <div class="col-4">
+                <h5 class="mb-0">Year Release: </h5>
+              </div>
+              <div class="col-8">
+                <p id="year-release-label" class="text-white text-end my-2">2012 to 2023</p>
+                <div id="year-release-slider-range"></div>
+              </div>
+            </div>
+            <div class="row align-items-end my-3">
+              <div class="col-4">
+                <h5 class="mb-0">Min User Votes: </h5>
+              </div>
+              <div class="col-8">
+                <p id="min-user-votes-label" class="text-white text-end"></p>
+                <div id="min-user-votes-slider-range-max"></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
+  <!-- This row is where the search results should appear -->
+  <div class="container-fluid mt-4">
+    <div class="row">
+      <div id="search-result-container" class="col-12 d-flex flex-wrap">
+        <!-- Below is the HTML card elements to insert with JavaScript -->
+      </div>
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>
-<script src="./assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="./assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+  integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+  crossorigin="anonymous">
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script src="./assets/script.js"></script>
