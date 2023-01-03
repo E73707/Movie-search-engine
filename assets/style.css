@@ -10,7 +10,7 @@ body {
     background-repeat: no-repeat;
 }
 
-h1, h2, h3, h4, p {
+h1, h2, h3, h4, h5, p {
     color: white;
 }
 
@@ -31,30 +31,28 @@ h4 {
     font-weight: 400;
 }
 
+h5 {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
 p {
     font-size: 1rem;
     margin-bottom: 0;
 }
 
-#search-button, #advanced-search-btn {
+#search-button {
     border-radius: 10px;
     font-weight: 700;
-    width: 70px; /* to edit unit */
+    width: 70px;
     height: 100%;
     color: white;
     background: #1E87D2;
     border: none;
 }
 
-#advanced-search-btn {
-    width: fit-content;
-    padding: 0px 10px;
-    margin-top: 5px;
-    background: #C2883D;
-}
-
 #search-button:hover {
-    border: 1px solid white; /* personally don't really like the hover effect as it's too abrupt */
+    border: 1px solid white;
 }
 
 #search-button:active {
@@ -72,7 +70,37 @@ p {
     color: white;
 }
 
-.filter-btn, .filter-option-btn {
+.navbar-toggler-icon {
+    background-image: url('./img/white-hamburger-btn.png');
+}
+
+#navbar-toggler-border-color {
+    border-color: white;
+}
+
+.modal-content {
+    border: none;
+}
+
+/* Jquery slider */
+.ui-widget-header {
+    background-color: #1ED269 !important;
+}
+
+/* custom filter checkbox */
+input[type=checkbox] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* TODO -- :checked not working... why? */
+/* input[type=checkbox]:checked {
+    background: #1ED269;
+    color: white;
+} */
+
+.genre-checkbox {
     padding: 5px 10px;
     border-radius: 12px;
     border: none;
@@ -80,19 +108,18 @@ p {
     color: white;
 }
 
-.filter-btn:hover, .filter-option-btn:hover {
+.genre-checkbox:hover {
     background: #E4843F;
 }
 
-.filter-option-btn {
-    background: none;
-    border: 1.5px solid chocolate;
-}
+/* .genre-checkbox:active {
+    background: #1ED269;
+    color: white;
+} */
 
-.navbar-toggler-icon {
-    background-image: url('./img/white-hamburger-btn.png');
-}
-
-#navbar-toggler-border-color {
-    border-color: white;
+/* TODO: to fix this */
+@media (max-width: 768px) {
+    body {
+        background-size: auto;
+    }
 }

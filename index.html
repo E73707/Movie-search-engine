@@ -11,7 +11,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <link href="./assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="./assets/style.css">
-  </link>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  
 </head>
 
 <body>
@@ -57,48 +58,16 @@
       </div>
     </nav>
   </div>
-
-  <!-- This row is where the search results should appear -->
-  <div class="container-fluid mt-4">
-    <div class="row">
-      <div class="col-12 d-flex flex-wrap">
-        <!-- Below is the HTML card elements to insert with JavaScript -->
-        <!-- <div class="card mx-3 my-3 bg-dark" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Movie title</h5>
-            <p class="card-text my-1">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary mt-2">Go somewhere</a>
-          </div>
-        </div>
-        <div class="card mx-3 my-3 bg-dark" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Movie title</h5>
-            <p class="card-text my-1">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary mt-2">Go somewhere</a>
-          </div>
-        </div>
-        <div class="card mx-3 my-3 bg-dark" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Movie title</h5>
-            <p class="card-text my-1">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary mt-2">Go somewhere</a>
-        </div> -->
-      </div>
-    </div>
-  </div>
-  <!-- Filter Box Modal -->
+  <!-- Search Modal -->
   <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content bg-transparent">
         <div class="row mb-2">
           <div class="col-9 px-0">
-            <input type="text" class="form-control">
+            <input type="text" id="keyword-search-input" class="form-control">
           </div>
           <div class="col-3">
-            <button id="search-button">Search</button>
+              <button id="search-button">Search</button>
           </div>
         </div>
         <div class="row">
@@ -108,16 +77,64 @@
             </a>
           </div>
         </div>
+        <!-- Advanced Search Filter -->
         <div id="add-filter-container" class="row d-none">
           <div id="filter-render-box" class="col-12 py-2">
-            <!-- to render filter box -->
-            <!-- To decide on filter options -->
-            <!-- To generate option button from an array in JavaScript -->
-          </div>
-          <div class="col-12">
-            <a href="#filter" id="add-filter-text-link" class="text-link">+ Add more filter</a>
+            <div class="row">
+              <div class="col-12">
+                <h5>Genre: </h5>
+              </div>
+              <div id="genre-selection-btn" class="d-flex flex-wrap col-12 mt-2">
+                
+              </div>
+            </div>
+            <div class="row align-items-end">
+              <div class="col-4">
+                <h5 class="mb-0">Duration: </h5>
+              </div>
+              <div class="col-8">
+                <p id="duration-label" class="text-white text-end my-2">90-180 min</p>
+                <div id="duration-slider-range"></div>
+              </div>
+            </div>
+            <div class="row align-items-end my-3">
+              <div class="col-4">
+                <h5 class="mb-0">User Ratings: </h5>
+              </div>
+              <div class="col-8">
+                <p id="user-rating-label" class="text-white text-end my-2">8 to 10</p>
+                <div id="user-rating-slider-range"></div>
+              </div>
+            </div>
+            <div class="row align-items-end my-3">
+              <div class="col-4">
+                <h5 class="mb-0">Year Release: </h5>
+              </div>
+              <div class="col-8">
+                <p id="year-release-label" class="text-white text-end my-2">2012 to 2023</p>
+                <div id="year-release-slider-range"></div>
+              </div>
+            </div>
+            <div class="row align-items-end my-3">
+              <div class="col-4">
+                <h5 class="mb-0">Min User Votes: </h5>
+              </div>
+              <div class="col-8">
+                <p id="min-user-votes-label" class="text-white text-end"></p>
+                <div id="min-user-votes-slider-range-max"></div>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+  <!-- This row is where the search results should appear -->
+  <div class="container-fluid mt-4">
+    <div class="row">
+      <div id="search-result-container" class="col-12 d-flex flex-wrap">
+        <!-- Below is the HTML card elements to insert with JavaScript -->
+      </div>
       </div>
     </div>
   </div>
@@ -125,4 +142,12 @@
 
 </html>
 <script src="./assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+  integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+  crossorigin="anonymous">
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script src="./assets/script.js"></script>
