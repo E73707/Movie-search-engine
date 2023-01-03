@@ -1,0 +1,119 @@
+.card {
+  padding: 0px;
+  text-align: center;
+  float: left;
+  width: 40%;
+  margin: 10px;
+  margin-top: 40px;
+  position: relative;
+}
+
+@media screen and (max-width: 600px) {
+  .card {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .card {
+    width: 20%;
+    margin-bottom: 20px;
+  }
+}
+
+#container {
+  align-self: center;
+  margin: 50px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-weight: 700;
+}
+
+.genres {
+  margin: 60px;
+  align-items: center;
+  width: 28%;
+  text-align: center;
+}
+
+.genreBtn {
+  background-color: #355e3b;
+  color: white;
+  border: none;
+  margin: 2px;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.genreBtn:hover {
+  background-color: blueviolet;
+}
+
+.findBtn {
+  margin-top: 10px;
+}
+
+.findBtn button {
+  background-color: #355e3b;
+  color: white;
+  border: none;
+  margin-top: 10px;
+}
+
+.inputs-div {
+  flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.slidecontainer {
+  margin: 60px;
+  text-align: center;
+  width: 28%;
+  align-items: center;
+}
+
+.slider {
+  justify-content: center;
+  text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  .inputs-div {
+    margin-bottom: 20px;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 600px) {
+  .genres {
+    width: fit-content;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .slidecontainer {
+    width: fit-content;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .slider {
+    width: fit-content;
+    margin-bottom: 20px;
+  }
+}
+
+#top10title {
+  text-align: center;
+}
