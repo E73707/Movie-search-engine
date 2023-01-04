@@ -1,97 +1,104 @@
 * {
-    margin: 0px;
-    font-family: 'Lato', 'Trebuchet MS', Helvetica, sans-serif; /* to test again */
+  margin: 0px;
+  font-family: "Lato", "Trebuchet MS", Helvetica, sans-serif; /* to test again */
 }
 
 body {
-    margin-top: 15px;
-    background-image: url('./img/woman-lying-in-bed-and-watching-TV.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
+  margin-top: 15px;
+  background-image: url("./img/woman-lying-in-bed-and-watching-TV.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-h1, h2, h3, h4, h5, p {
-    color: white;
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  color: white;
 }
 
 h1 {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 h2 {
-    font-size: 1.75rem;
+  font-size: 1.75rem;
 }
 
 h3 {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 h4 {
-    font-size: 1.25rem;
-    font-weight: 400;
+  font-size: 1.25rem;
+  font-weight: 400;
 }
 
 h5 {
-    font-size: 1.1rem;
-    font-weight: 700;
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 
 p {
-    font-size: 1rem;
-    margin-bottom: 0;
+  font-size: 1rem;
+  margin-bottom: 0;
 }
 
 #search-button {
-    border-radius: 10px;
-    font-weight: 700;
-    width: 70px;
-    height: 100%;
-    color: white;
-    background: #1E87D2;
-    border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  width: 70px;
+  height: 100%;
+  color: white;
+  background: #1e87d2;
+  border: none;
 }
 
 #search-button:hover {
-    border: 1px solid white;
+  border: 1px solid white;
 }
 
 #search-button:active {
-    background: rgb(39 76 103)
+  background: rgb(39 76 103);
 }
 
-#advanced-search-text, .text-link {
-    color: white;
-    text-decoration: none;
-    font-size: 0.9rem;
+#advanced-search-text,
+.text-link {
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
 }
 
-#advanced-search-text:hover, .text-link:hover {
-    text-decoration: underline;
-    color: white;
+#advanced-search-text:hover,
+.text-link:hover {
+  text-decoration: underline;
+  color: white;
 }
 
 .navbar-toggler-icon {
-    background-image: url('./img/white-hamburger-btn.png');
+  background-image: url("./img/white-hamburger-btn.png");
 }
 
 #navbar-toggler-border-color {
-    border-color: white;
+  border-color: white;
 }
 
 .modal-content {
-    border: none;
+  border: none;
 }
 
 /* Jquery slider */
 .ui-widget-header {
-    background-color: #1ED269 !important;
+  background-color: #1ed269 !important;
 }
 
 /* custom filter checkbox */
-input[type=checkbox] {
-    opacity: 0;
-    width: 0;
-    height: 0;
+input[type="checkbox"] {
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 /* TODO -- :checked not working... why? */
@@ -101,15 +108,15 @@ input[type=checkbox] {
 } */
 
 .genre-checkbox {
-    padding: 5px 10px;
-    border-radius: 12px;
-    border: none;
-    background: chocolate;
-    color: white;
+  padding: 5px 10px;
+  border-radius: 12px;
+  border: none;
+  background: chocolate;
+  color: white;
 }
 
 .genre-checkbox:hover {
-    background: #E4843F;
+  background: #e4843f;
 }
 
 /* .genre-checkbox:active {
@@ -119,7 +126,7 @@ input[type=checkbox] {
 
 /* TODO: to fix this */
 @media (max-width: 768px) {
-    body {
-        background-size: auto;
-    }
+  body {
+    background-size: auto;
+  }
 }
