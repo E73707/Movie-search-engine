@@ -54,14 +54,19 @@ function getReviews() {
     })
     .then(function (data) {
       var urlArray = [];
-      var movieId = data.results[0].id;
-      var reviewUrl ="https://api.themoviedb.org/3/movie/" +movieId +"/reviews?api_key=b3d061705cb162c0d2c4c93862143c72&language=en-US";
-      var movieInfoUrl ="https://api.themoviedb.org/3/movie/" +movieId +"?api_key=b3d061705cb162c0d2c4c93862143c72&language=en-US";
-      var castUrl ="https://api.themoviedb.org/3/movie/" +movieId +"/credits?api_key=b3d061705cb162c0d2c4c93862143c72";
-      urlArray.push(reviewUrl);
-      urlArray.push(movieInfoUrl);
-      urlArray.push(castUrl);
-      return urlArray;
+      console.log(data);
+      for (var i = 0; i < data.results.length; i++) { 
+        if (data.results[i].title.toLowerCase() === movieName.toLowerCase()) { 
+          var movieId = data.results[i].id;
+          var reviewUrl ="https://api.themoviedb.org/3/movie/" +movieId +"/reviews?api_key=b3d061705cb162c0d2c4c93862143c72&language=en-US";
+          var movieInfoUrl ="https://api.themoviedb.org/3/movie/" +movieId +"?api_key=b3d061705cb162c0d2c4c93862143c72&language=en-US";
+          var castUrl ="https://api.themoviedb.org/3/movie/" +movieId +"/credits?api_key=b3d061705cb162c0d2c4c93862143c72";
+          urlArray.push(reviewUrl);
+          urlArray.push(movieInfoUrl);
+          urlArray.push(castUrl);
+          return urlArray;
+        }
+      }
     })
     .then(function (data) {
       fetch(data[1])
