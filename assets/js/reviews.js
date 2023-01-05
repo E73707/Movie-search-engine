@@ -10,10 +10,14 @@ var releaseDate = document.querySelector("#release-date");
 var cast = document.querySelector("#cast");
 var addressUrl = document.location.href;
 
+//show reviews for movies clicked from top-10 html page
 if (addressUrl.includes("?")) {
-  input.val(addressUrl.split("?")[1]);
-  getReviews();
+	let decodedUrl = decodeURI(addressUrl);
+	let movieName = decodedUrl.split("?")[1];
+  	input.val(movieName);
+  	getReviews();
 }
+
 //add autocomplete to input box while key in movie's name for search
 input.keyup(function () {
   var movieName = input.val();
