@@ -135,7 +135,7 @@ $(function () {
 
   let reviewFunc = function (title) {
     // localStorage.setItem(title);
-    window.location.href = "reviews.html";
+    window.location.href = "reviews.html" + "?" + title;
     // window.location.assign("Top-10.html");
     movieName = title;
     console.log(movieName);
