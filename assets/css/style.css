@@ -1,132 +1,169 @@
 * {
-  margin: 0px;
-  font-family: "Lato", "Trebuchet MS", Helvetica, sans-serif; /* to test again */
+    margin: 0px;
+    font-family: 'Lato', 'Trebuchet MS', Helvetica, sans-serif;
+    scroll-behavior: smooth;
 }
 
-body {
-  margin-top: 15px;
-  background-image: url("./img/woman-lying-in-bed-and-watching-TV.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
+.body-bg {
+    background: black;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-p {
-  color: white;
+#homepage-bg-img {
+    background-image: url('../img/woman-deciding-what-to-watch.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 800px;
+    padding-top: 250px;
+}
+
+h1, h2, h3, h4, h5, p {
+    color: white;
 }
 
 h1 {
-  font-size: 2rem;
+    font-size: 2.25rem;
 }
 
 h2 {
-  font-size: 1.75rem;
+    font-size: 2rem;
+    font-weight: 700;
 }
 
 h3 {
-  font-size: 1.5rem;
+    font-size: 1.5rem;
 }
 
 h4 {
-  font-size: 1.25rem;
-  font-weight: 400;
+    font-size: 1.25rem;
+    font-weight: 700;
 }
 
 h5 {
-  font-size: 1.1rem;
-  font-weight: 700;
+    font-size: 1.1rem;
+    font-weight: 700;
 }
 
 p {
-  font-size: 1rem;
-  margin-bottom: 0;
+    font-size: 1rem;
+    margin-bottom: 0;
 }
 
 #search-button {
-  border-radius: 10px;
-  font-weight: 700;
-  width: 70px;
-  height: 100%;
-  color: white;
-  background: #1e87d2;
-  border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    width: 70px;
+    height: 100%;
+    color: white;
+    background: #1E87D2;
+    border: none;
 }
 
 #search-button:hover {
-  border: 1px solid white;
+    border: 1px solid white;
 }
 
 #search-button:active {
-  background: rgb(39 76 103);
+    background: rgb(39 76 103)
 }
 
-#advanced-search-text,
-.text-link {
-  color: white;
-  text-decoration: none;
-  font-size: 0.9rem;
+#advanced-search-text, .text-link {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
 }
 
-#advanced-search-text:hover,
-.text-link:hover {
-  text-decoration: underline;
-  color: white;
+#advanced-search-text:hover, .text-link:hover {
+    text-decoration: underline;
+    color: white;
 }
 
 .navbar-toggler-icon {
-  background-image: url("./img/white-hamburger-btn.png");
+    background-image: url('../img/white-hamburger-btn.png');
 }
 
 #navbar-toggler-border-color {
-  border-color: white;
+    border-color: white;
 }
 
 .modal-content {
-  border: none;
+    border: none;
 }
 
 /* Jquery slider */
 .ui-widget-header {
-  background-color: #1ed269 !important;
+    background-color: #1ED269 !important;
 }
 
 /* custom filter checkbox */
-input[type="checkbox"] {
-  opacity: 0;
-  width: 0;
-  height: 0;
+input[type=checkbox] {
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
-/* TODO -- :checked not working... why? */
-/* input[type=checkbox]:checked {
+input[type=checkbox]:checked + label {
     background: #1ED269;
     color: white;
-} */
+}
 
 .genre-checkbox {
-  padding: 5px 10px;
-  border-radius: 12px;
-  border: none;
-  background: chocolate;
-  color: white;
+    padding: 5px 10px;
+    border-radius: 12px;
+    border: none;
+    background: chocolate;
+    color: white;
+    cursor: pointer;
+    transition: all .3s;
 }
 
 .genre-checkbox:hover {
-  background: #e4843f;
+    background: #E4843F;
 }
 
-/* .genre-checkbox:active {
-    background: #1ED269;
-    color: white;
-} */
+.card-img-resize {
+    width: auto;
+    height: 500px;
+    object-fit: cover;
+}
 
-/* TODO: to fix this */
+.icon-scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center
+    ;
+    background-color: dodgerblue;
+    box-shadow: 1px 1px 5px rgb(252, 221, 221);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+/* Custom Responsive Screen */
+
+@media (max-width: 1200px) {
+    #homepage-bg-img {
+        background-attachment: unset;
+        background-position-x: -150px;
+    }
+}
+
+@media (max-width: 1024px) {
+    #homepage-bg-img {
+        background-position-x: -100px;
+    }
+}
 @media (max-width: 768px) {
-  body {
-    background-size: auto;
-  }
+    body {
+        background-size: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    #homepage-bg-img {
+        background-position-x: -175px;
+    }
 }

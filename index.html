@@ -16,125 +16,186 @@
 </head>
 
 <body>
-  <div id="nav-bar" class="container-fluid">
-    <nav class="navbar navbar-expand-lg">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          <img alt="website logo" width="120px" src="./assets/img/what-to-watch-logo.png">
-        </a>
-        <button class="navbar-toggler text-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item mx-lg-3">
-              <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item mx-lg-3">
-              <a class="nav-link text-white" href="#">Menu</a>
-            </li>
-            <li class="nav-item mx-lg-3 dropdown">
-              <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Dropdown
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li>
-          </ul>
-          <div>
-            <a href="#search" data-bs-toggle="modal" data-bs-target="#searchModal">
-              <img src="assets/img/magnifying-glass.png" height="20px" alt="">
-            </a>
+  <header>
+    <div id="nav-bar" class="container-fluid position-absolute top-0 left-0">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="./index.html">
+            <img alt="website logo" width="120px" src="./assets/img/what-to-watch-logo.png">
+          </a>
+          <div class="d-flex d-lg-none">
+            <button class="navbar-toggler text-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
           </div>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-end pe-3 pe-lg-0">
+              <li class="nav-item mx-lg-3">
+                <a class="nav-link active text-white" aria-current="page" href="./index.html">Home</a>
+              </li>
+              <li class="nav-item mx-lg-3 dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  Top 10s
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                </ul>
+                <li class="nav-item mx-lg-3">
+                  <a class="nav-link text-white" href="#">Movie Reviews</a>
+                </li>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Static Search Bar-->
+  <div class="container-fluid">
+    <section>
+      <div id="homepage-bg-img" class="row">
+        <div class="offset-1 col-11 offset-md-2 col-md-10 offset-lg-6 col-lg-6">
+            <h1>Movie Search Engine Simplified</h1>
+            <h3 class="my-3">Spend less time deciding what to watch</h3>
+            <div class="row mb-2">
+              <div class="col-9 px-0">
+                <input type="text" id="keyword-search-input" class="form-control">
+              </div>
+              <div class="col-3">
+                <a href="#section-2-heading">
+                  <button id="search-button">Search</button>
+                </a>
+              </div>
+              <div class="row">
+                <div class="col-12 px-1 pt-2">
+                  <a id="advanced-search-text" href="#advanced-filters-container" class="m-0">
+                    <p>Advanced Search</p>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <!-- Advanced Search Filter -->
+            <div id="add-filter-container" class="row d-none">
+              <div id="filter-render-box" class="col-11 col-md-10 col-xl-11 py-2">
+                <div class="row">
+                  <div class="col-12">
+                    <h5>Genre: </h5>
+                  </div>
+                  <div id="genre-selection-btn" class="d-flex flex-wrap col-12 mt-2">
+                    <!-- Clickable genre buttons would appear here -->
+                  </div>
+                </div>
+                <div class="row align-items-end">
+                  <div class="col-4">
+                    <h5 class="mb-0">Duration: </h5>
+                  </div>
+                  <div class="col-8">
+                    <p id="duration-label" class="text-white text-end my-2">90-180 min</p>
+                    <div id="duration-slider-range"></div>
+                  </div>
+                </div>
+                <div class="row align-items-end my-3">
+                  <div class="col-4">
+                    <h5 class="mb-0">User Ratings: </h5>
+                  </div>
+                  <div class="col-8">
+                    <p id="user-rating-label" class="text-white text-end my-2">8 to 10</p>
+                    <div id="user-rating-slider-range"></div>
+                  </div>
+                </div>
+                <div class="row align-items-end my-3">
+                  <div class="col-4">
+                    <h5 class="mb-0">Year Release: </h5>
+                  </div>
+                  <div class="col-8">
+                    <p id="year-release-label" class="text-white text-end my-2">2012 to 2023</p>
+                    <div id="year-release-slider-range"></div>
+                  </div>
+                </div>
+                <div class="row my-5">
+                  <div class="col-4">
+                    <h5 class="mb-0">User Votes: </h5>
+                  </div>
+                  <div class="col-4">
+                    <input id="min-user-votes" type="number" aria-label="min-user-votes" class="form-control" placeholder="min user votes (optional)">
+                  </div>
+                  <div class="col-4">
+                    <input id="max-user-votes" type="number" aria-label="max-user-votes" class="form-control" placeholder="max user votes (optional)">
+                  </div>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
-    </nav>
+    </section>
   </div>
-  <!-- Search Modal -->
-  <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+  <div class="container-fluid body-bg">
+    <section>
+      <div class="row">
+        <div class="col-12 text-center my-4">
+          <h2 id="section-2-heading" class="mt-3">Top Rated Movies of All Time</h2>
+        </div>
+        <div id="loading-spinner" class="col-12 text-center d-none">
+            <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div><br>
+            <strong>Loading...</strong>
+        </div>
+        <div class="col-12">
+          <div id="search-result-container" class="row">
+            <!-- search results would appear here -->
+          </div>
+
+          <!-- TODO: pagination -->
+          <nav aria-label="...">
+            <ul id="movie-pagination" class="pagination">
+              
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <a class="icon-scroll-top" href="#icon-scroll-top">
+    +
+  </a>
+
+  <!-- Trailer Modal -->
+  <div class="modal fade" id="trailer-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-md-down ">
       <div class="modal-content bg-transparent">
         <div class="row mb-2">
-          <div class="col-9 px-0">
-            <input type="text" id="keyword-search-input" class="form-control">
-          </div>
-          <div class="col-3">
-              <button id="search-button">Search</button>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 px-1">
-            <a id="advanced-search-text" href="#advanced-filters-container" class="m-0">
-              <p>Advanced Search</p>
-            </a>
-          </div>
-        </div>
-        <!-- Advanced Search Filter -->
-        <div id="add-filter-container" class="row d-none">
-          <div id="filter-render-box" class="col-12 py-2">
-            <div class="row">
-              <div class="col-12">
-                <h5>Genre: </h5>
-              </div>
-              <div id="genre-selection-btn" class="d-flex flex-wrap col-12 mt-2">
-                
-              </div>
-            </div>
-            <div class="row align-items-end">
-              <div class="col-4">
-                <h5 class="mb-0">Duration: </h5>
-              </div>
-              <div class="col-8">
-                <p id="duration-label" class="text-white text-end my-2">90-180 min</p>
-                <div id="duration-slider-range"></div>
-              </div>
-            </div>
-            <div class="row align-items-end my-3">
-              <div class="col-4">
-                <h5 class="mb-0">User Ratings: </h5>
-              </div>
-              <div class="col-8">
-                <p id="user-rating-label" class="text-white text-end my-2">8 to 10</p>
-                <div id="user-rating-slider-range"></div>
-              </div>
-            </div>
-            <div class="row align-items-end my-3">
-              <div class="col-4">
-                <h5 class="mb-0">Year Release: </h5>
-              </div>
-              <div class="col-8">
-                <p id="year-release-label" class="text-white text-end my-2">2012 to 2023</p>
-                <div id="year-release-slider-range"></div>
-              </div>
-            </div>
-            <div class="row align-items-end my-3">
-              <div class="col-4">
-                <h5 class="mb-0">Min User Votes: </h5>
-              </div>
-              <div class="col-8">
-                <p id="min-user-votes-label" class="text-white text-end"></p>
-                <div id="min-user-votes-slider-range-max"></div>
-              </div>
-            </div>
+          <div id="trailer-and-plot" class="col-12 px-0 bg-black">
+          <!-- Movie Trailer + Plot are rendered here -->
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- This row is where the search results should appear -->
-  <div class="container-fluid mt-4">
-    <div class="row">
-      <div id="search-result-container" class="col-12 d-flex flex-wrap">
-        <!-- Below is the HTML card elements to insert with JavaScript -->
-      </div>
+
+  <!-- API Error Modal -->
+  <div class="modal fade" id="api-error-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 text-black" id="staticBackdropLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p id="api-error-message" class="text-black"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Understood</button>
+        </div>
       </div>
     </div>
   </div>
