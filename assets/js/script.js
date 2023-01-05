@@ -5,6 +5,9 @@ const searchBtn = document.getElementById('search-button');
 const keywordSearchQueryBox = document.getElementById('keyword-search-input');
 const searchResultContainer = document.getElementById('search-result-container');
 const today = dayjs().format('YYYY-MM-DD');
+const errorModal = new bootstrap.Modal(document.getElementById('api-error-modal'));
+const apiErrorMsg = document.getElementById('api-error-message')
+
 let broadSearch250 = {}
 let advancedSearchShow = false;
 
@@ -21,21 +24,28 @@ function loadLocalStore() {
     let localStoreBroadSearch250 = JSON.parse(localStorage.getItem('broadSearch250'));
     if (localStoreBroadSearch250 !== null) {
         broadSearch250 = localStoreBroadSearch250;
+        renderSearchResults(broadSearch250.result);
     }
 }
 
 function SearchSubmit() {
     searchBtn.addEventListener('click', () => {
         const rawSearchQuery = keywordSearchQueryBox.value.trim().split(' '); // e.g. gun, war => ['gun', 'war']
-        console.log(rawSearchQuery)
+        const loadingSpinner = document.getElementById('loading-spinner');
+        const searchResultHeading = document.getElementById('section-2-heading')
+        
         let normalSearchQuery = []; // This is a new array that excludes empty strings
         for (var i = 0; i < rawSearchQuery.length; i++) {
-            if(rawSearchQuery[i] !== ' ') { // This conditional statement accounts for possible empty strings, i.e. push only non-empty string
+            if(rawSearchQuery[i] !== ' ') { // This conditional statement accounts for possible empty strings, i.e., only push non-empty strings
                 normalSearchQuery.push(rawSearchQuery[i]);
             }
         }
+
+        searchResultHeading.innerText = 'Search Results';
+
+        loadingSpinner.classList.remove('d-none');
+        searchResultContainer.innerHTML = '';
         
-        // TODO: continue working on this
         if(advancedSearchShow) {
             const durationLabelElem = document.getElementById('duration-label');
             const durationList = durationLabelElem.innerText.replace(" min", "").split("-");
@@ -54,24 +64,30 @@ function SearchSubmit() {
             const yearReleaseElem = document.getElementById('year-release-label');
             const yearReleaseRange = yearReleaseElem.innerText.split(' to ')
 
+            const minUserVotesField = document.getElementById('min-user-votes');
+            const maxUserVotesField = document.getElementById('max-user-votes');
+            
             console.log(genresSelected);
             console.log(durationList);
             console.log(userRatingRange);
             console.log(yearReleaseRange);
-            
+            console.log(minUserVotesField.value);
+            console.log(maxUserVotesField.value);
+
             const advancedParam = {
                 searchQuery: normalSearchQuery,
                 genre: genresSelected,
                 duration: durationList,
                 userRating: userRatingRange,
                 yearRelease: yearReleaseRange,
-                userVotes: '' //TODO: add input value
+                userVotes: [minUserVotesField.value, maxUserVotesField.value]
             }
             advancedSearchSubmit(advancedParam)
         }
         else {
             searchMoviePlot(normalSearchQuery);
         }
+
     })
 }
 
@@ -79,24 +95,25 @@ function SearchSubmit() {
 function searchMoviePlot(normalSearchQuery) {
     if(!broadSearch250.timestamp || dayjs().diff(dayjs(broadSearch250.timestamp), 'day') > 1) { // Fetch new data if localStorage is empty or the existing data on localStorage is older than 1 day
         console.log('fetch new data from API');
-        fetch(`https://imdb-api.com/API/AdvancedSearch/k_gym6ncv8?title_type=feature&user_rating=7.0,10&num_votes=50000,&count=250&sort=year,desc`)
+        fetch(`https://imdb-api.com/API/AdvancedSearch/k_lyhir636?title_type=feature&user_rating=7.0,10&num_votes=50000,&languages=en&count=250&sort=user_rating,desc`)
             .then(function(response){
                 if(response.status === 404){
                     throw new Error('API Not found');
-                } else if (response.status ===500){
+                } else if (response.status === 500){
                     throw new Error('API Server Error');
                 } else {
                     return response.json();
                 }
             })
             .catch(function(err) {
-                alert(err); // TODO: change to modal alert box
+                apiErrorMsg.innerText = err;
+                errorModal.show();
             })
             .then(function(data) {
                 if(!data){
                     return;
                 } else if (data.length === 0) { // i.e., if fetched data is an empty array
-                    alert('Your search returns no result. Please try again'); // TODO: change to modal alert box
+                    alert('Your search returns no result. Please try again'); // TODO: change to alert modal
                     return;
                 } else {
                     broadSearch250.timestamp = new Date();
@@ -116,108 +133,155 @@ function searchMoviePlot(normalSearchQuery) {
         }
     }
     console.log(filterPlotList);
-    renderNormalSearch(filterPlotList);
+    renderSearchResults(filterPlotList);
 }
 
-function renderNormalSearch(filterPlotList) {
+function renderSearchResults(filterPlotList) {
+    const loadingSpinner = document.getElementById('loading-spinner');
+    // let html = `
+    // <li class="page-item disabled">
+    //   <a class="page-link">Previous</a>
+    // </li>
+    // 
+    // for 
+    
     for (var i = 0; i < filterPlotList.length; i++) {
+        let movieId = filterPlotList[i].id;
         let posterImg = filterPlotList[i].image;
         let movieTitle = filterPlotList[i].title;
         let yearRelease = filterPlotList[i].description.trim().slice(1,-1); // remove the bracket from the string
         let runtime = filterPlotList[i].runtimeStr; // returns string, e.g. '120 min'
         let genres = filterPlotList[i].genres;
         let audienceRating = filterPlotList[i].imDbRating;
-        let plot = filterPlotList[i].plot; // TODO: apply Bootstrap collapse here
-        let renderPlotSearchResult = `<div class="card mx-3 my-3 bg-dark" style="width: 18rem;">
-                                                <img src="${posterImg}" class="card-img-top" alt="...">
+        let plot = filterPlotList[i].plot;
+
+        let renderPlotSearchResult = `
+                                        <div class="col-6 col-lg-4 col-xl-3">
+                                            <div class="card shadow-lg my-3 bg-dark">
+                                                <img src="${posterImg}" class="card-img-top card-img-resize" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">${movieTitle}</h5>
                                                     <p class="card-text my-1">Year Release: ${yearRelease}</p>
                                                     <p class="card-text my-1">Runtime: ${runtime}</p>
                                                     <p class="card-text my-1">Genre: ${genres}</p>
                                                     <p class="card-text my-1">Audience Rating: ${audienceRating}/10</p>
-                                                    <a href="#" class="btn btn-primary mt-2">Play Trailer</a>
+                                                    <a onclick="playTrailer('${movieId}', '${plot.replace("'", "\\'")}','${movieTitle.replace("'", "\\'")}')" href="#click-trailer" class="btn btn-primary mt-2">Trailer</a>
+                                                    <br>
+                                                    <button class="btn btn-primary mt-2">User Reviews</button>
                                                 </div>
-                                            </div>`
+                                            </div>
+                                        </div>`
         searchResultContainer.insertAdjacentHTML('beforeend', renderPlotSearchResult);
     }
-    // button link -- to open popup modal + use YouTube API to play trailer
+    loadingSpinner.classList.add('d-none');
 }
 
-// https://imdb-api.com/API/AdvancedSearch/k_gym6ncv8?title_type=feature&user_rating=7.0,10&release_date=1980-01-01,2022-01-01&num_votes=50000,&genres=comedy,romance
+function playTrailer(movieId, plot, movieTitle) {
+    console.log('in function');
+    const trailerModal = document.getElementById('trailer-and-plot');
+    const enableMovieTrailerModal = new bootstrap.Modal(document.getElementById('trailer-modal'));
+    
+    fetch(`https://imdb-api.com/en/API/YouTubeTrailer/k_lyhir636/${movieId}`)
+    .then(function(response){
+        //throw new Error('Test modal');
+        if(response.status === 404){
+            throw new Error('API Not found');
+        } else if (response.status === 500){
+            throw new Error('API Server Error');
+        } else {
+            return response.json();
+        }
+    })
+    .catch(function(err) {
+        apiErrorMsg.innerText = err;
+        errorModal.show();
+    })
+    .then(function(data) {
+        console.log('then 2', data);
+        if(!data){
+            return;
+        } else if (data.length === 0) {
+            alert('Your search returns no result. Please try again'); // TODO: change to alert modal
+            return;
+        } else {
+            let trailerHTML = `<iframe width="100%" height="500px" src="https://youtube.com/embed/${data.videoUrl.split('?v=')[1]}" alt="Movie Trailer"></iframe>
+                                <h4 class="my-2 px-3">${movieTitle}</h4>
+                                <h5 class="my-2 px-3">Plot Summary</h5>
+                                <p class="px-3 pb-3">${plot}</p>`
+            
+            trailerModal.innerHTML = trailerHTML;
+            enableMovieTrailerModal.show();
+            // trailerModal.insertAdjacentHTML('beforeend', trailerHTML)
+        }
+    })
+    
+}
 
 function advancedSearchSubmit(advancedParam){
 
-    let minUserRating = advancedParam.userRating[0];
-    let maxUserRating = advancedParam.userRating[1];
-    let minYear = dayjs(advancedParam.yearRelease[0]).format('YYYY-MM-DD');
-    let maxYear = dayjs(advancedParam.yearRelease[1]).format('YYYY-MM-DD');
-    let minUserVotes = advancedParam.userVotes[0];
-    let maxUserVotes = advancedParam.userVotes[1]; // how to define the max value?
-    let genreArray = advancedParam.genre.toString();
-    let plotSearch = advancedParam.searchQuery; // it seems that IMDB only searches the movie title, but not the plot
-    let runtime = advancedParam.duration;
+    const minUserRating = advancedParam.userRating[0];
+    const maxUserRating = advancedParam.userRating[1];
+    const minYear = dayjs(advancedParam.yearRelease[0]).format('YYYY-MM-DD');
+    const maxYear = dayjs(advancedParam.yearRelease[1]).format('YYYY-MM-DD')
+    const minUserVotes = advancedParam.userVotes[0];
+    const maxUserVotes = advancedParam.userVotes[1];
+    const genreArray = advancedParam.genre.toString();
+    const plotSearch = advancedParam.searchQuery;
+    const runtime = advancedParam.duration;
 
-    console.log(minUserRating)
-    console.log(maxUserRating)
-    console.log(minYear)
-    console.log(maxYear)
-    console.log(genreArray)
-    console.log(plotSearch)
-    console.log(runtime)
+    fetch(`https://imdb-api.com/API/AdvancedSearch/k_lyhir636?title_type=feature&user_rating=${minUserRating},${maxUserRating}&release_date=${minYear},${maxYear}&num_votes=${minUserVotes},${maxUserVotes}&genres=${genreArray}&languages=en&count=250&sort=user_rating,desc`)
+    .then(function(response){
+        if(response.status === 404){
+            throw new Error('API Not found');
+        } else if (response.status === 500){
+            throw new Error('API Server Error');
+        } else {
+            return response.json();
+        }
+    })
+    .catch(function(err) {
+        apiErrorMsg.innerText = err;
+        errorModal.show();
+    })
+    .then(function(data) {
+        if(!data){
+            return;
+        } else if (data.length === 0) { // i.e., if fetched data is an empty array
+            alert('Your search returns no result. Please try again'); // TODO: change to alert modal
+            return;
+        } else {
+            console.log(data)
+            // Runtime and plot search filterings are performed after data has been fetched
+            // API search on these 2 parameters are either inaccurate or not functioning, hence the following Javascript codes are used to perform the filterings instead.
+            if(runtime.length !== 0){
+                console.log(data.results);
+                let advancedFilterList = [];
 
-    // fetch(`https://imdb-api.com/API/AdvancedSearch/k_gym6ncv8?title_type=feature&user_rating=${minUserRating},${maxUserRating}&release_date=${minYear},${maxYear}&num_votes=${minUserVotes},${maxUserVotes}&genres=${genreArray}`)
-    // .then(function(response){
-    //     if(response.status === 404){
-    //         throw new Error('API Not found');
-    //     } else if (response.status === 500){
-    //         throw new Error('API Server Error');
-    //     } else {
-    //         return response.json();
-    //     }
-    // })
-    // .catch(function(err) {
-    //     alert(err); // to change to modal alert box
-    // })
-    // .then(function(data) {
-    //     if(!data){
-    //         return;
-    //     } else if (data.length === 0) { // i.e., if fetched data is an empty array
-    //         alert('Your search returns no result. Please try again'); // TODO: change to modal alert box
-    //         return;
-    //     } else {
-    //         console.log(data)
-    //         // to apply runtime and plotSearch here after data has been fetched
-    //         if(runtime.length !== 0){
-
-    //             var filterRuntime = []; // is this the right place to put this variable?
-    //             var advancedFilterList = []; // is this the right place to put this variable?
-
-    //             for (var i = 0; i < data.length; i++){
-    //                 let minRuntimeData = data.results[i].runtimeStr.split(' ')[0];
-    //                 let maxRuntimeData = data.results[i].runtimeStr.split(' ')[1];
-    //                 if(minRuntimeData >= runtime[0] && maxRuntimeData <= runtime[1]) {
-    //                     filterRuntime.push(result[i]);
-    //                 }
-
-    //             if(plotSearch.length !== 0) {
-    //                 for (var j = 0; j < plotSearch.length; j++) {
-    //                     for (var k = 0; k < filterRuntime.length; k++) {
-    //                         let moviePlotAdvanced = filterRuntime.results[k].plot;
-    //                         if (moviePlotAdvanced.search(plotSearch[i]) !== -1) {
-    //                             advancedFilterList.push(plotSearch[i]);
-    //                         }
-    //                     }
-    //                 }
-    //             }
-    //             }
-    //         }
-    //     }
-    // })
-}
-
-function renderAdvancedSearch(){
-    
+                for (var i = 0; i < data.results.length; i++){
+                    if(data.results[i].runtimeStr !== null) { // In some data objects, runtimeStr and/or plot value is null. This app is designed to exclude these objects from the advancedFilterList array.
+                        let runtimeData = Number(data.results[i].runtimeStr.split(' ')[0]);
+                        if(runtimeData >= Number(runtime[0]) && runtimeData <= Number(runtime[1])) {
+                            if(plotSearch.length !== 0) {
+                                for (var j = 0; j < plotSearch.length; j++) {
+                                    if (data.results[i].plot !== null && data.results[i].plot.search(plotSearch[j]) !== -1) {
+                                        const foundIndex = advancedFilterList.findIndex((item) => { // This is to prevent duplicates in advancedFilterList array.
+                                            return item.id == data.results[i].id;
+                                        })
+                                        if(foundIndex === -1) {
+                                            advancedFilterList.push(data.results[i]);
+                                        }
+                                    }
+                                }
+                            }
+                            
+                        }
+                    }
+                }
+                console.log(advancedFilterList);
+                renderSearchResults(advancedFilterList);
+            }
+        }
+    })
 }
 
 function advancedSearchTextClick() {
@@ -280,25 +344,3 @@ $(document).ready(function() {
         }
     });
 })
-
-// Advanced Search - Min User Votes slider rendering -- TODO: how best to define max value?
-$(function() {
-    $( "#min-user-votes-slider-range-max" ).slider({
-      range: "max",
-      min: 0,
-      max: 1000000, // what should the max value be?
-      value: 50000,
-      slide: function( event, ui ) {
-        $( "#amount" ).val( ui.value );
-      }
-    });
-    $( "#amount" ).val( $( "#min-user-votes-slider-range-max" ).slider( "value" ) );
-  } );
-
-  // Autoscroll to search results container -- TODO: this is still not working
-$('#search_button').click(function () {
-var offset = $(searchResultContainer).offset().top;
-$('html,body').animate({
-    scrollTop: offset
-}, 100);
-});
