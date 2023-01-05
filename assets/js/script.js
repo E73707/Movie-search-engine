@@ -158,13 +158,7 @@ function advancedSearchSubmit(advancedParam){
     let plotSearch = advancedParam.searchQuery; // it seems that IMDB only searches the movie title, but not the plot
     let runtime = advancedParam.duration;
 
-    console.log(minUserRating)
-    console.log(maxUserRating)
-    console.log(minYear)
-    console.log(maxYear)
-    console.log(genreArray)
-    console.log(plotSearch)
-    console.log(runtime)
+ 
 
     // fetch(`https://imdb-api.com/API/AdvancedSearch/k_gym6ncv8?title_type=feature&user_rating=${minUserRating},${maxUserRating}&release_date=${minYear},${maxYear}&num_votes=${minUserVotes},${maxUserVotes}&genres=${genreArray}`)
     // .then(function(response){
