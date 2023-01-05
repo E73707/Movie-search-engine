@@ -1,0 +1,208 @@
+* {
+    margin: 0px;
+    font-family: 'Lato', 'Trebuchet MS', Helvetica, sans-serif;
+    /* to test again */
+}
+
+body {
+    margin-top: 15px;
+    background-image: url('../img/woman-lying-in-bed-and-watching-TV.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+    color: white;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.75rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+h4 {
+    font-size: 1.25rem;
+    font-weight: 400;
+}
+
+h5 {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+p {
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
+#search-button {
+    border-radius: 10px;
+    font-weight: 700;
+    width: 70px;
+    height: 100%;
+    color: white;
+    background: #1E87D2;
+    border: none;
+}
+
+#search-button:hover {
+    border: 1px solid white;
+}
+
+#search-button:active {
+    background: rgb(39 76 103)
+}
+
+#advanced-search-text,
+.text-link {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+#advanced-search-text:hover,
+.text-link:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+.navbar-toggler-icon {
+    background-image: url('../img/white-hamburger-btn.png');
+}
+
+#navbar-toggler-border-color {
+    border-color: white;
+}
+
+.modal-content {
+    border: none;
+}
+
+/* Jquery slider */
+.ui-widget-header {
+    background-color: #1ED269 !important;
+}
+
+/* custom filter checkbox */
+input[type=checkbox] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* TODO -- :checked not working... why? */
+/* input[type=checkbox]:checked {
+    background: #1ED269;
+    color: white;
+} */
+
+.genre-checkbox {
+    padding: 5px 10px;
+    border-radius: 12px;
+    border: none;
+    background: chocolate;
+    color: white;
+}
+
+.genre-checkbox:hover {
+    background: #E4843F;
+}
+
+/* .genre-checkbox:active {
+    background: #1ED269;
+    color: white;
+} */
+
+/* TODO: to fix this */
+@media (max-width: 768px) {
+    body {
+        background-size: auto;
+    }
+}
+
+#container-reviews {
+    margin-top: 100px;
+    margin-left: 100px;
+}
+
+#review-content {
+    width: 1000px;
+}
+
+#input-box-holder {
+    display: inline-block;
+    width: 500px;
+    padding-left: 0px !important;
+}
+
+.card {
+    margin-top: 20px;
+}
+
+.error-message {
+    font-size: 20px;
+    color: rgb(199, 35, 35);
+    font-style: italic;
+}
+
+#form-reviews {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+#movie-poster {
+    max-width: 200px;
+}
+
+.card-text {
+
+    color: black;
+}
+
+#movie-info {
+    display: none;
+}
+
+#release-date {
+    font-size: 15px;
+    color: rgb(216, 221, 221);
+    line-height: 10px;
+    margin-bottom: 10px;
+}
+
+#movie-title {
+    margin-bottom: 15px;
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+}
+
+.card-body {
+    margin-left: 0px;
+}
+
+#poster-container {
+    max-width: 220px;
+}
+
+#cast {
+    color: black;
+    margin-top: 10px;
+}
+
+.card-review {
+    background-color: rgb(237, 245, 248) !important;
+}
