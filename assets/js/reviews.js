@@ -12,10 +12,10 @@ var addressUrl = document.location.href;
 
 //show reviews for movies clicked from top-10 html page
 if (addressUrl.includes("?")) {
-	let decodedUrl = decodeURI(addressUrl);
-	let movieName = decodedUrl.split("?")[1];
-  	input.val(movieName);
-  	getReviews();
+  let decodedUrl = decodeURI(addressUrl);
+  let movieName = decodedUrl.split("?")[1];
+  input.val(movieName);
+  getReviews();
 }
 
 //add autocomplete to input box while key in movie's name for search
@@ -24,7 +24,8 @@ input.keyup(function () {
   if (movieName != "") {
     var availableNames = [];
     var movieIDUrl =
-      "https://api.themoviedb.org/3/search/movie?api_key=b3d061705cb162c0d2c4c93862143c72&query=" +movieName;
+      "https://api.themoviedb.org/3/search/movie?api_key=b3d061705cb162c0d2c4c93862143c72&query=" +
+      movieName;
     fetch(movieIDUrl)
       .then(function (response) {
         return response.json();
@@ -47,21 +48,36 @@ function getReviews() {
 
   var movieName = input.val();
   var movieIDUrl =
-    "https://api.themoviedb.org/3/search/movie?api_key=b3d061705cb162c0d2c4c93862143c72&query=" +movieName;
+    "https://api.themoviedb.org/3/search/movie?api_key=b3d061705cb162c0d2c4c93862143c72&query=" +
+    movieName;
   fetch(movieIDUrl)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
       var urlArray = [];
-      var movieId = data.results[0].id;
-      var reviewUrl ="https://api.themoviedb.org/3/movie/" +movieId +"/reviews?api_key=b3d061705cb162c0d2c4c93862143c72&language=en-US";
-      var movieInfoUrl ="https://api.themoviedb.org/3/movie/" +movieId +"?api_key=b3d061705cb162c0d2c4c93862143c72&language=en-US";
-      var castUrl ="https://api.themoviedb.org/3/movie/" +movieId +"/credits?api_key=b3d061705cb162c0d2c4c93862143c72";
-      urlArray.push(reviewUrl);
-      urlArray.push(movieInfoUrl);
-      urlArray.push(castUrl);
-      return urlArray;
+      console.log(data);
+      for (var i = 0; i < data.results.length; i++) {
+        if (data.results[i].title.toLowerCase() === movieName.toLowerCase()) {
+          var movieId = data.results[i].id;
+          var reviewUrl =
+            "https://api.themoviedb.org/3/movie/" +
+            movieId +
+            "/reviews?api_key=b3d061705cb162c0d2c4c93862143c72&language=en-US";
+          var movieInfoUrl =
+            "https://api.themoviedb.org/3/movie/" +
+            movieId +
+            "?api_key=b3d061705cb162c0d2c4c93862143c72&language=en-US";
+          var castUrl =
+            "https://api.themoviedb.org/3/movie/" +
+            movieId +
+            "/credits?api_key=b3d061705cb162c0d2c4c93862143c72";
+          urlArray.push(reviewUrl);
+          urlArray.push(movieInfoUrl);
+          urlArray.push(castUrl);
+          return urlArray;
+        }
+      }
     })
     .then(function (data) {
       fetch(data[1])
@@ -74,13 +90,21 @@ function getReviews() {
           var moviePoster = document.createElement("img");
           moviePoster.classList.add("img-fluid", "rounded-start");
           moviePoster.setAttribute("id", "movie-poster");
-          var movieImgUrl ="https://image.tmdb.org/t/p/w500/" + data.poster_path;
+          var movieImgUrl =
+            "https://image.tmdb.org/t/p/w500/" + data.poster_path;
           moviePoster.setAttribute("src", movieImgUrl);
           moviePoster.setAttribute("alt", data.title);
           posterContainer.appendChild(moviePoster);
           movieTitle.textContent = data.title;
           movieOverview.textContent = "Overview: " + data.overview;
-          releaseDate.textContent ="Release date: " +data.release_date +" | Duration: " +data.runtime +"mins" +" | Rating: " +data.vote_average;
+          releaseDate.textContent =
+            "Release date: " +
+            data.release_date +
+            " | Duration: " +
+            data.runtime +
+            "mins" +
+            " | Rating: " +
+            data.vote_average;
         });
       fetch(data[2])
         .then(function (response) {
@@ -103,18 +127,29 @@ function getReviews() {
             var errorMessage = document.createElement("div");
             errorMessage.classList.add("error-message");
             content.appendChild(errorMessage);
-            errorMessage.textContent ="Sorry, the review for this movie is not found";
+            errorMessage.textContent =
+              "Sorry, the review for this movie is not found";
           } else {
             console.log(data);
             for (var i = 0; i < data.results.length; i++) {
               var card = document.createElement("div");
               var cardHeader = document.createElement("div");
               var cardBody = document.createElement("div");
-              cardHeader.textContent ="By " +data.results[i].author +" posted at: " +data.results[i].updated_at.split("T")[0];
+              cardHeader.textContent =
+                "By " +
+                data.results[i].author +
+                " posted at: " +
+                data.results[i].updated_at.split("T")[0];
               cardBody.textContent = data.results[i].content;
               card.classList.add("card", "card-review");
               cardHeader.classList.add("card-header");
-              cardBody.classList.add("card-body","border-dark","bg-light","mb-3","card-review");
+              cardBody.classList.add(
+                "card-body",
+                "border-dark",
+                "bg-light",
+                "mb-3",
+                "card-review"
+              );
               content.appendChild(card);
               card.appendChild(cardHeader);
               card.appendChild(cardBody);

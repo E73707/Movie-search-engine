@@ -9,6 +9,7 @@ body {
     background-image: url('../img/woman-lying-in-bed-and-watching-TV.jpg');
     background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 h1,
