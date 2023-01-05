@@ -13,61 +13,54 @@
     />
     <link rel="stylesheet" href="../css/style.css"></link>
     <link rel="stylesheet" href="../css/top-10.css"/>
+    <script src="https://kit.fontawesome.com/4f0b43d67b.js" crossorigin="anonymous"></script>
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
   </head>
 
   <body>
     <div id="nav-bar" class="container-fluid">
-      <div class="row align-items-center mx-1">
-        <div class="col-12 col-xl-1">
-          <a href="/index.html">
-            <img
-              alt="website logo"
-              width="120px"
-              src="../img/what-to-watch-logo.png"
-            />
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img alt="website logo" width="120px" src="../img/what-to-watch-logo.png">
           </a>
-        </div>
-        <div class="col-12 col-xl-4 d-flex justify-content-evenly">
-          <a class="header-menu" href="#dropdown-1"><h4>Menu</h4></a>
-          <a class="header-menu" href="#dropdown-2"><h4>Menu</h4></a>
-          <a class="header-menu" href="#dropdown-3"><h4>Menu</h4></a>
-        </div>
-        <div class="col-12 col-xl-7">
-          <!-- is there a way to make sure that this div is aligned right? -->
-          <input id="search-bar-input" type="text" placeholder="Search.." />
-          <button id="search-button">Search</button>
-          <a
-            id="advanced-search-text"
-            data-bs-toggle="collapse"
-            href="#movie-filters-container"
-          >
-            Advanced Search
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-5"></div>
-        <div class="col-7">
-          <!-- to insert advanced search collapse element here upon Advanced Search link click -->
-        </div>
-      </div>
-    </div>
-    <!-- <div class="container-fluid">
-    <div class="row">
-      <div class="col-12">
-        <a href="#link" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample">Link</a>
-        <div style="min-height: 120px;">
-          <div class="collapse collapse-horizontal" id="collapseWidthExample">
-            <div class="card card-body" style="width: 300px;">
-              This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
+          <button class="navbar-toggler text-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item mx-lg-3">
+                <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item mx-lg-3">
+                <a class="nav-link text-white" href="#">Menu</a>
+              </li>
+              <li class="nav-item mx-lg-3 dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+            </ul>
+            <div>
+              <a href="#search" data-bs-toggle="modal" data-bs-target="#searchModal">
+                <img src="../img/magnifying-glass.png" height="20px" alt="">
+              </a>
             </div>
           </div>
         </div>
-      </div>
-    </div> -->
+      </nav>
+    </div>
+
     <div>
       <div class="inputs-div">
         <div class="genres">
@@ -77,7 +70,6 @@
             <button class="findBtn">find movies</button>
           </div>
         </div>
-
         <div class="slidecontainer">
           <div class="slider">
             <h4>Minimum vote count</h4>
@@ -98,11 +90,18 @@
         <section id="container"></section>
       </div>
     </div>
-    <script
+    <div id="video"></div>
+    <div>
+      <button class="testBtn">
+        test
+      </button>
+    </div>
+    <!-- <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
       crossorigin="anonymous"
-    ></script>
+    ></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
       integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
