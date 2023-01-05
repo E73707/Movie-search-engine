@@ -79,7 +79,7 @@ p {
 }
 
 .navbar-toggler-icon {
-  background-image: url("./img/white-hamburger-btn.png");
+    background-image: url('../img/white-hamburger-btn.png');
 }
 
 #navbar-toggler-border-color {
@@ -159,5 +159,11 @@ input[type=checkbox]:checked + label {
 @media (max-width: 768px) {
     body {
         background-size: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    #homepage-bg-img {
+        background-position-x: -175px;
     }
 }
