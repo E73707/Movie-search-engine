@@ -165,9 +165,9 @@ function renderSearchResults(filterPlotList) {
                                                     <p class="card-text my-1">Runtime: ${runtime}</p>
                                                     <p class="card-text my-1">Genre: ${genres}</p>
                                                     <p class="card-text my-1">Audience Rating: ${audienceRating}/10</p>
-                                                    <a onclick="playTrailer('${movieId}', '${plot.replace("'", "\\'")}','${movieTitle.replace("'", "\\'")}')" href="#click-trailer" class="btn btn-primary mt-2">Trailer</a>
+                                                    <a onclick="playTrailer('${movieId}', '${plot.replace("'", "\\'")}','${movieTitle.replace("'", "\\'")}')" href="#click-trailer" class="btn trailer-btn mt-2">Trailer</a>
                                                     <br>
-                                                    <button class="btn btn-primary mt-2">User Reviews</button>
+                                                    <button class="btn btn-primary mt-2 reviews-btn border-0">User Reviews</button>
                                                 </div>
                                             </div>
                                         </div>`

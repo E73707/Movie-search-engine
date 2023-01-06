@@ -2,6 +2,11 @@
     margin: 0px;
     font-family: 'Lato', 'Trebuchet MS', Helvetica, sans-serif;
     scroll-behavior: smooth;
+    /* --secondary-color: #1ED269; */
+    --secondary-color: #43AA8B;
+    --orange: chocolate;
+    --orange-hover: #E4843F;
+    --blue: #1E87D2;
 }
 
 .body-bg {
@@ -55,7 +60,7 @@ p {
     width: 70px;
     height: 100%;
     color: white;
-    background: #1E87D2;
+    background: var(--blue);
     border: none;
 }
 
@@ -78,6 +83,32 @@ p {
     color: white;
 }
 
+.trailer-btn {
+    background: var(--orange);
+    width: fit-content;
+    color: white;
+    font-weight: 700;
+}
+
+.trailer-btn:hover {
+    /* background: #DD1155; */
+    background: #E4843F;
+    color: white;
+}
+
+.reviews-btn {
+    background: var(--secondary-color);
+    width: fit-content;
+    color: white;
+    font-weight: 700;
+}
+
+.reviews-btn:hover {
+    /* background: #DD1155; */
+    background: var(--orange-hover);
+    color: white;
+}
+
 .navbar-toggler-icon {
     background-image: url('../img/white-hamburger-btn.png');
 }
@@ -92,7 +123,7 @@ p {
 
 /* Jquery slider */
 .ui-widget-header {
-    background-color: #1ED269 !important;
+    background-color: var(--secondary-color) !important;
 }
 
 /* custom filter checkbox */
@@ -103,7 +134,7 @@ input[type=checkbox] {
 }
 
 input[type=checkbox]:checked + label {
-    background: #1ED269;
+    background: var(--secondary-color);
     color: white;
 }
 
@@ -111,14 +142,14 @@ input[type=checkbox]:checked + label {
     padding: 5px 10px;
     border-radius: 12px;
     border: none;
-    background: chocolate;
+    background: var(--orange);
     color: white;
     cursor: pointer;
     transition: all .3s;
 }
 
 .genre-checkbox:hover {
-    background: #E4843F;
+    background: var(--orange-hover)
 }
 
 .card-img-resize {
@@ -135,7 +166,7 @@ input[type=checkbox]:checked + label {
     align-items: center;
     justify-content: center
     ;
-    background-color: dodgerblue;
+    background-color: var(--blue);
     box-shadow: 1px 1px 5px rgb(252, 221, 221);
     border-radius: 50%;
     width: 50px;
