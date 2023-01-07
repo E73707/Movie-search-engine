@@ -99,7 +99,23 @@ In reality, the simple search shouldn't be limited to just 250 data objects, as 
 
 --------------------------------------------------------
 ### **4. Reviews (reviews.html)**
+The reviews page has two ways of using: users can search for the reviews of a certain movie directly by using the search bar, or if they are checking movies from the home page or top-10 page, they can click the review button and it will redirect to this review page and show the reviews. 
 
+
+#### **i. Search Bar**
+The search bar is designed by using jquery autocomplete function assigned to the keyup event, so that when the user enter some keywords, such as "harry potter", all the movies which contain the keywords will be shown in the list while typing ignoring case, users can simply click whichever the one they are looking for, instead of typing the full name of the movie. 
+
+<p>
+    <img src=./assets/img/readme/reviews-search-bar.png>
+</p>
+
+#### **ii. Search results**
+By using the search bar, or click the review button from other page, the search result part will show the movie's information and reviews fetched from The Movie Database (TMDB). 
+
+The movie's information card contains a poster, the movie's name, release date, duration, rating, a short description and the starrings. The reviews cards contain the poster's username, the post date, and the review contents.
+<p>
+    <img src=./assets/img/readme/reviews-content.png>
+</p>
 --------------------------------------------------------
 ## Directions for Future Development
 
