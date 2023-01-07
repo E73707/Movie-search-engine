@@ -21,7 +21,7 @@
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
           <a class="navbar-brand" href="./index.html">
-            <img alt="website logo" width="120px" src="./assets/img/what-to-watch-logo.png">
+            <img width="120px" src="./assets/img/what-to-watch-logo.png" alt="website logo">
           </a>
           <div class="d-flex d-lg-none">
             <button class="navbar-toggler text-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -61,10 +61,12 @@
   <!-- Static Search Bar-->
   <div class="container-fluid">
     <section>
-      <div id="homepage-bg-img" class="row">
-        <div class="offset-1 col-11 offset-md-2 col-md-10 offset-lg-6 col-lg-6">
-            <h1>Movie Search Engine Simplified</h1>
-            <h3 class="my-3">Spend less time deciding what to watch</h3>
+      <div id="homepage-bg-img" class="row" alt="an image of a woman sitting in front of a TV with a remote control in her hand, figuring out what movie to watch.">
+        <div class="offset-1 col-11 offset-lg-5 col-lg-7 ps-lg-5 offset-xl-6 col-xl-6 ps-xl-0">
+            <div class="row">
+              <h1 class="px-0">Movie Search Engine Simplified</h1>
+              <h3 class="mt-1 mb-3 px-0">Spend less time deciding what to watch</h3>
+            </div>
             <div class="row mb-2">
               <div class="col-9 px-0">
                 <input type="text" id="keyword-search-input" class="form-control">
@@ -84,7 +86,7 @@
             </div>
             <!-- Advanced Search Filter -->
             <div id="add-filter-container" class="row d-none">
-              <div id="filter-render-box" class="col-11 col-md-10 col-xl-11 py-2">
+              <div id="filter-render-box" class="col-11 py-2">
                 <div class="row">
                   <div class="col-12">
                     <h5>Genre: </h5>
@@ -94,34 +96,34 @@
                   </div>
                 </div>
                 <div class="row align-items-end">
-                  <div class="col-4">
+                  <div class="col-3 col-lg-4 col-xl-3">
                     <h5 class="mb-0">Duration: </h5>
                   </div>
-                  <div class="col-8">
+                  <div class="col-9 col-lg-8">
                     <p id="duration-label" class="text-white text-end my-2">90-180 min</p>
                     <div id="duration-slider-range"></div>
                   </div>
                 </div>
                 <div class="row align-items-end my-3">
-                  <div class="col-4">
+                  <div class="col-3 col-lg-4 col-xl-3">
                     <h5 class="mb-0">User Ratings: </h5>
                   </div>
-                  <div class="col-8">
+                  <div class="col-9 col-lg-8">
                     <p id="user-rating-label" class="text-white text-end my-2">8 to 10</p>
                     <div id="user-rating-slider-range"></div>
                   </div>
                 </div>
                 <div class="row align-items-end my-3">
-                  <div class="col-4">
+                  <div class="col-3 col-lg-4 col-xl-3">
                     <h5 class="mb-0">Year Release: </h5>
                   </div>
-                  <div class="col-8">
+                  <div class="col-9 col-lg-8">
                     <p id="year-release-label" class="text-white text-end my-2">2012 to 2023</p>
                     <div id="year-release-slider-range"></div>
                   </div>
                 </div>
                 <div class="row my-5">
-                  <div class="col-4">
+                  <div class="col-3 col-lg-4 col-xl-3">
                     <h5 class="mb-0">User Votes: </h5>
                   </div>
                   <div class="col-4">
@@ -163,8 +165,9 @@
     </section>
   </div>
 
-  <a class="icon-scroll-top" href="#icon-scroll-top">
-    +
+  <!-- Scroll-to-top Button -->
+  <a class="to-top-button d-none" href="#nav-bar">
+    <img height="32px" src="./assets/img/thick-arrow-pointing-up.png" alt="an image of an arrow pointing upward">
   </a>
 
   <!-- Trailer Modal -->
@@ -184,15 +187,15 @@
   <div class="modal fade" id="api-error-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5 text-black" id="staticBackdropLabel">Modal title</h1>
+        <div class="modal-header bg-warning">
+          <h1 class="modal-title fs-5 text-black" id="error-message-headline">Oops</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <p id="api-error-message" class="text-black"></p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Understood</button>
+          <button type="button" class="btn understood-btn" data-bs-dismiss="modal">Understood</button>
         </div>
       </div>
     </div>

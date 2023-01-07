@@ -7,6 +7,7 @@ const searchResultContainer = document.getElementById('search-result-container')
 const today = dayjs().format('YYYY-MM-DD');
 const errorModal = new bootstrap.Modal(document.getElementById('api-error-modal'));
 const apiErrorMsg = document.getElementById('api-error-message')
+const errorMsgHeadline = document.getElementById('error-message-headline');
 
 let broadSearch250 = {}
 let advancedSearchShow = false;
@@ -30,10 +31,12 @@ function loadLocalStore() {
 
 function SearchSubmit() {
     searchBtn.addEventListener('click', () => {
-        const rawSearchQuery = keywordSearchQueryBox.value.trim().split(' '); // e.g. gun, war => ['gun', 'war']
+        const rawSearchQuery = keywordSearchQueryBox.value.replace(',',' ').replace('.',' ').trim().split(' '); // e.g. "gun,  war " => ['gun', '', '', 'war']
         const loadingSpinner = document.getElementById('loading-spinner');
         const searchResultHeading = document.getElementById('section-2-heading')
         
+        console.log(rawSearchQuery)
+
         let normalSearchQuery = []; // This is a new array that excludes empty strings
         for (var i = 0; i < rawSearchQuery.length; i++) {
             if(rawSearchQuery[i] !== ' ') { // This conditional statement accounts for possible empty strings, i.e., only push non-empty strings
@@ -106,6 +109,7 @@ function searchMoviePlot(normalSearchQuery) {
                 }
             })
             .catch(function(err) {
+                errorMsgHeadline.innerText = `${response.status} Error` // TODO: check if its' working
                 apiErrorMsg.innerText = err;
                 errorModal.show();
             })
@@ -113,7 +117,8 @@ function searchMoviePlot(normalSearchQuery) {
                 if(!data){
                     return;
                 } else if (data.length === 0) { // i.e., if fetched data is an empty array
-                    alert('Your search returns no result. Please try again'); // TODO: change to alert modal
+                    apiErrorMsg.innerText = 'Your search returns no result. Please try again';
+                    errorModal.show();
                     return;
                 } else {
                     broadSearch250.timestamp = new Date();
@@ -167,7 +172,9 @@ function renderSearchResults(filterPlotList) {
                                                     <p class="card-text my-1">Audience Rating: ${audienceRating}/10</p>
                                                     <a onclick="playTrailer('${movieId}', '${plot.replace("'", "\\'")}','${movieTitle.replace("'", "\\'")}')" href="#click-trailer" class="btn trailer-btn mt-2">Trailer</a>
                                                     <br>
-                                                    <button class="btn btn-primary mt-2 reviews-btn border-0">User Reviews</button>
+                                                    <a href="./assets/html/reviews.html?${movieTitle}">
+                                                        <button class="btn btn-primary mt-2 reviews-btn border-0">User Reviews</button>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>`
@@ -177,7 +184,6 @@ function renderSearchResults(filterPlotList) {
 }
 
 function playTrailer(movieId, plot, movieTitle) {
-    console.log('in function');
     const trailerModal = document.getElementById('trailer-and-plot');
     const enableMovieTrailerModal = new bootstrap.Modal(document.getElementById('trailer-modal'));
     
@@ -193,15 +199,16 @@ function playTrailer(movieId, plot, movieTitle) {
         }
     })
     .catch(function(err) {
+        errorMsgHeadline.innerText = `${response.status} Error` // TODO: check if its' working
         apiErrorMsg.innerText = err;
         errorModal.show();
     })
     .then(function(data) {
-        console.log('then 2', data);
         if(!data){
             return;
         } else if (data.length === 0) {
-            alert('Your search returns no result. Please try again'); // TODO: change to alert modal
+            apiErrorMsg.innerText = 'Your search returns no result. Please try again';
+            errorModal.show();
             return;
         } else {
             let trailerHTML = `<iframe width="100%" height="500px" src="https://youtube.com/embed/${data.videoUrl.split('?v=')[1]}" alt="Movie Trailer"></iframe>
@@ -240,6 +247,7 @@ function advancedSearchSubmit(advancedParam){
         }
     })
     .catch(function(err) {
+        errorMsgHeadline.innerText = `${response.status} Error` // TODO: check if its' working
         apiErrorMsg.innerText = err;
         errorModal.show();
     })
@@ -247,7 +255,8 @@ function advancedSearchSubmit(advancedParam){
         if(!data){
             return;
         } else if (data.length === 0) { // i.e., if fetched data is an empty array
-            alert('Your search returns no result. Please try again'); // TODO: change to alert modal
+            apiErrorMsg.innerText = 'Your search returns no result. Please try again';
+            errorModal.show();
             return;
         } else {
             console.log(data)
