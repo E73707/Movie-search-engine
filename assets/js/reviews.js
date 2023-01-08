@@ -116,15 +116,18 @@ function getReviews() {
           } else {
             console.log(data);
             for (var i = 0; i < data.results.length; i++) {
+              var cardContainer = document.createElement('div');
               var card = document.createElement("div");
               var cardHeader = document.createElement("div");
               var cardBody = document.createElement("div");
               cardHeader.textContent =`By ${data.results[i].author}` +` posted at:${data.results[i].updated_at.split("T")[0]}`;
               cardBody.textContent = data.results[i].content;
-              card.classList.add("card", "card-review");
+              cardContainer.classList.add("row","g-0");
+              card.classList.add("card", "card-review","col-12");
               cardHeader.classList.add("card-header");
               cardBody.classList.add("card-body","border-dark","bg-light","mb-3","card-review");
-              content.appendChild(card);
+              content.appendChild(cardContainer);
+              cardContainer.appendChild(card);
               card.appendChild(cardHeader);
               card.appendChild(cardBody);
             }

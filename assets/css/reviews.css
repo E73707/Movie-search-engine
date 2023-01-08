@@ -99,7 +99,7 @@ p {
 }
 
 #review-content {
-    width: 1000px;
+    max-width: 1000px;
 }
 
 #input-box-holder {
