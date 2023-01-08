@@ -9,18 +9,22 @@ var movieOverview = document.querySelector("#movie-overview");
 var releaseDate = document.querySelector("#release-date");
 var cast = document.querySelector("#cast");
 var addressUrl = document.location.href;
+const apiKey = 'api_key=b3d061705cb162c0d2c4c93862143c72';
 
+//show reviews for movies clicked from top-10 html page
 if (addressUrl.includes("?")) {
-  input.val(addressUrl.split("?")[1]);
+  let decodedUrl = decodeURI(addressUrl);
+  let movieName = decodedUrl.split("?")[1];
+  input.val(movieName);
   getReviews();
 }
+
 //add autocomplete to input box while key in movie's name for search
 input.keyup(function () {
   var movieName = input.val();
   if (movieName != "") {
     var availableNames = [];
-    var movieIDUrl =
-      "https://api.themoviedb.org/3/search/movie?api_key=b3d061705cb162c0d2c4c93862143c72&query=" +movieName;
+    var movieIDUrl =`https://api.themoviedb.org/3/search/movie?${apiKey}&query=${movieName}`;
     fetch(movieIDUrl)
       .then(function (response) {
         return response.json();
@@ -42,22 +46,30 @@ function getReviews() {
   getReady();
 
   var movieName = input.val();
-  var movieIDUrl =
-    "https://api.themoviedb.org/3/search/movie?api_key=b3d061705cb162c0d2c4c93862143c72&query=" +movieName;
+  var movieIDUrl =`https://api.themoviedb.org/3/search/movie?${apiKey}&query=${movieName}`;
   fetch(movieIDUrl)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      var urlArray = [];
-      var movieId = data.results[0].id;
-      var reviewUrl ="https://api.themoviedb.org/3/movie/" +movieId +"/reviews?api_key=b3d061705cb162c0d2c4c93862143c72&language=en-US";
-      var movieInfoUrl ="https://api.themoviedb.org/3/movie/" +movieId +"?api_key=b3d061705cb162c0d2c4c93862143c72&language=en-US";
-      var castUrl ="https://api.themoviedb.org/3/movie/" +movieId +"/credits?api_key=b3d061705cb162c0d2c4c93862143c72";
-      urlArray.push(reviewUrl);
-      urlArray.push(movieInfoUrl);
-      urlArray.push(castUrl);
-      return urlArray;
+      if (data.results.length === 0) {
+        throw new Error();
+      } else {
+        var urlArray = [];
+        console.log(data);
+        for (var i = 0; i < data.results.length; i++) {
+          if (data.results[i].title.toLowerCase() === movieName.toLowerCase()) {
+            var movieId = data.results[i].id;
+            var reviewUrl =`https://api.themoviedb.org/3/movie/${movieId}/reviews?${apiKey}&language=en-US`;
+            var movieInfoUrl =`https://api.themoviedb.org/3/movie/${movieId}?${apiKey}&language=en-US`;
+            var castUrl =`https://api.themoviedb.org/3/movie/${movieId}/credits?${apiKey}`;
+            urlArray.push(reviewUrl);
+            urlArray.push(movieInfoUrl);
+            urlArray.push(castUrl);
+            return urlArray;
+          }
+        }
+      }
     })
     .then(function (data) {
       fetch(data[1])
@@ -66,7 +78,6 @@ function getReviews() {
         })
         .then(function getMovieInfo(data) {
           console.log(data);
-          movieInfo.style.display = "block";
           var moviePoster = document.createElement("img");
           moviePoster.classList.add("img-fluid", "rounded-start");
           moviePoster.setAttribute("id", "movie-poster");
@@ -77,6 +88,7 @@ function getReviews() {
           movieTitle.textContent = data.title;
           movieOverview.textContent = "Overview: " + data.overview;
           releaseDate.textContent ="Release date: " +data.release_date +" | Duration: " +data.runtime +"mins" +" | Rating: " +data.vote_average;
+          movieInfo.style.display = "block";
         });
       fetch(data[2])
         .then(function (response) {
@@ -96,6 +108,7 @@ function getReviews() {
         })
         .then(function (data) {
           if (data.results.length === 0) {
+            //show error message when there is no review for the movie
             var errorMessage = document.createElement("div");
             errorMessage.classList.add("error-message");
             content.appendChild(errorMessage);
@@ -106,7 +119,7 @@ function getReviews() {
               var card = document.createElement("div");
               var cardHeader = document.createElement("div");
               var cardBody = document.createElement("div");
-              cardHeader.textContent ="By " +data.results[i].author +" posted at: " +data.results[i].updated_at.split("T")[0];
+              cardHeader.textContent =`By ${data.results[i].author}` +` posted at:${data.results[i].updated_at.split("T")[0]}`;
               cardBody.textContent = data.results[i].content;
               card.classList.add("card", "card-review");
               cardHeader.classList.add("card-header");
@@ -117,6 +130,14 @@ function getReviews() {
             }
           }
         });
+    })
+    .catch(function (e) {
+      //show error message when the movie does not exist
+      movieInfo.style.display = "none";
+      var errorMessage = document.createElement("div");
+      errorMessage.classList.add("error-message");
+      content.appendChild(errorMessage);
+      errorMessage.textContent = `Sorry, the movie "${movieName}" is not found`;
     });
 }
 

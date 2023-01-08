@@ -1,14 +1,25 @@
 * {
     margin: 0px;
     font-family: 'Lato', 'Trebuchet MS', Helvetica, sans-serif;
-    /* to test again */
+    scroll-behavior: smooth;
+    /* --secondary-color: #1ED269; */
+    --secondary-color: #43AA8B;
+    --orange: chocolate;
+    --orange-hover: #E4843F;
+    --blue: #1E87D2;
+}
+
+.body-bg {
+    background: black;
 }
 
 body {
-    margin-top: 15px;
-    background-image: url('../img/woman-lying-in-bed-and-watching-TV.jpg');
+    background-image: url('../img/woman-deciding-what-to-watch.jpg');
+    background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
+    min-height: 800px;
+    padding-top: 100px;
 }
 
 h1,
@@ -21,11 +32,12 @@ p {
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 2.25rem;
 }
 
 h2 {
-    font-size: 1.75rem;
+    font-size: 2rem;
+    font-weight: 700;
 }
 
 h3 {
@@ -34,7 +46,7 @@ h3 {
 
 h4 {
     font-size: 1.25rem;
-    font-weight: 400;
+    font-weight: 700;
 }
 
 h5 {
@@ -53,7 +65,7 @@ p {
     width: 70px;
     height: 100%;
     color: white;
-    background: #1E87D2;
+    background: var(--blue);
     border: none;
 }
 
@@ -78,6 +90,32 @@ p {
     color: white;
 }
 
+.trailer-btn {
+    background: var(--orange);
+    width: fit-content;
+    color: white;
+    font-weight: 700;
+}
+
+.trailer-btn:hover {
+    /* background: #DD1155; */
+    background: #E4843F;
+    color: white;
+}
+
+.reviews-btn {
+    background: var(--secondary-color);
+    width: fit-content;
+    color: white;
+    font-weight: 700;
+}
+
+.reviews-btn:hover {
+    /* background: #DD1155; */
+    background: var(--orange-hover);
+    color: white;
+}
+
 .navbar-toggler-icon {
     background-image: url('../img/white-hamburger-btn.png');
 }
@@ -92,7 +130,7 @@ p {
 
 /* Jquery slider */
 .ui-widget-header {
-    background-color: #1ED269 !important;
+    background-color: var(--secondary-color) !important;
 }
 
 /* custom filter checkbox */
@@ -102,38 +140,73 @@ input[type=checkbox] {
     height: 0;
 }
 
-/* TODO -- :checked not working... why? */
-/* input[type=checkbox]:checked {
-    background: #1ED269;
+input[type=checkbox]:checked+label {
+    background: var(--secondary-color);
     color: white;
-} */
+}
 
 .genre-checkbox {
     padding: 5px 10px;
     border-radius: 12px;
     border: none;
-    background: chocolate;
+    background: var(--orange);
     color: white;
+    cursor: pointer;
+    transition: all .3s;
 }
 
 .genre-checkbox:hover {
-    background: #E4843F;
+    background: var(--orange-hover)
 }
 
-/* .genre-checkbox:active {
-    background: #1ED269;
-    color: white;
-} */
+.card-img-resize {
+    width: auto;
+    height: 500px;
+    object-fit: cover;
+}
 
-/* TODO: to fix this */
+.icon-scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--blue);
+    box-shadow: 1px 1px 5px rgb(252, 221, 221);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+/* Custom Responsive Screen */
+
+@media (max-width: 1200px) {
+    #homepage-bg-img {
+        background-attachment: unset;
+        background-position-x: -150px;
+    }
+}
+
+@media (max-width: 1024px) {
+    #homepage-bg-img {
+        background-position-x: -100px;
+    }
+}
+
 @media (max-width: 768px) {
     body {
         background-size: auto;
     }
 }
 
+@media (max-width: 576px) {
+    #homepage-bg-img {
+        background-position-x: -175px;
+    }
+}
+
 #container-reviews {
-    margin-top: 100px;
     margin-left: 100px;
 }
 
