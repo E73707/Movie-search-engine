@@ -103,7 +103,7 @@ The reviews page has two ways of using: users can search for the reviews of a ce
 
 
 #### **i. Search Bar**
-The search bar is designed by using jquery autocomplete function assigned to the keyup event, so that when the user enter some keywords, such as "harry potter", all the movies which contain the keywords will be shown in the list while typing ignoring case, users can simply click whichever the one they are looking for, instead of typing the full name of the movie. 
+The search bar is designed by using jquery autocomplete function assigned to the keyup event, so that when the user enter some keywords, such as "the godfather", all the movies which contain the keywords will be shown in the list while typing ignoring case, users can simply click whichever the one they are looking for, instead of typing the full name of the movie. All the movie names in the list are fetched from the TMDB api, which keep updating when the input by the user changes. 
 
 <p>
     <img src=./assets/img/readme/reviews-search-bar.png>
