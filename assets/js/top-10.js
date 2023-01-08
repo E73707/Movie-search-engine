@@ -1,4 +1,5 @@
 $(function () {
+  console.log(window.location.href);
   var sectionEl = document.querySelector("#container");
   var genreEl = document.querySelector(".genre-tags");
   var searchEl = $(".findBtn");
@@ -9,6 +10,43 @@ $(function () {
   var movieId;
   var slider = document.getElementById("myRange");
   var output = document.getElementById("voteCountOutput");
+  var decodedUrl = "";
+  var splitUrl = "";
+  var thisUrl = document.location.href;
+
+  let pageload = function () {
+    if (thisUrl.includes("?")) {
+      genreSelections = [];
+      let genres = [];
+      let decodedUrl = decodeURI(thisUrl);
+      let splitUrl = decodedUrl.split("?");
+      splitUrl.length == 3
+        ? genres.push(splitUrl[1], splitUrl[2])
+        : genres.push(splitUrl[1]);
+      if (genres[0] == "action") {
+        genres[0] = 28;
+        headingEL.text(`Top 10 action movies of all time`);
+      } else if (genres[0] == "drama") {
+        genres[0] = 18;
+        headingEL.text(`Top 10 drama movies of all time`);
+      } else {
+        genres[0] = 10749;
+        genres[1] = 35;
+        headingEL.text(`Top 10 movies including: romance and comedy `);
+      }
+      genreSelections = genres;
+      getTopTen();
+      genreSelections = [];
+      decodedUrl = "";
+      splitUrl = "";
+    } else {
+      genreSelections = [];
+      decodedUrl = "";
+      splitUrl = "";
+      getTopTen();
+    }
+    genreSelections = [];
+  };
 
   // pulls genre IDs from tmdb then creates buttons with corresponding names and values.
   // USES TMBD API
@@ -68,6 +106,7 @@ $(function () {
   // then creates cards with the title, user rating, short description, trailer button and a button which links to the reviews page.
   // USES TMBD API
   getTopTen = function () {
+    console.log(genreSelections);
     let genreIds = genreSelections.join();
     let apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=b3d061705cb162c0d2c4c93862143c72&language=en-US&sort_by=vote_average.desc&include_adult=false&include_video=false&page=1&vote_count.gte=${output.innerHTML}&with_genres=${genreIds}&with_watch_monetization_types=flatrate`;
     fetch(apiUrl)
@@ -254,5 +293,43 @@ $(function () {
     player.destroy();
   });
 
-  getTopTen();
+  $(".home").on("click", function () {
+    window.location.href = "../../index.html";
+  });
+
+  $(".reviews").on("click", function () {
+    window.location.href = "reviews.html";
+  });
+
+  $(".trending").on("click", function () {
+    window.location.href = "Upcomming.html";
+  });
+
+  $(".dropdown-toggle").click(function () {
+    window.location.href = "Top-10.html";
+  });
+
+  let dropdownMenu = document.querySelector(".dropdown-menu");
+
+  $(".dropdown").mouseover(function () {
+    dropdownMenu.classList.add("show");
+  });
+
+  $(".dropdown").mouseout(function () {
+    dropdownMenu.classList.remove("show");
+  });
+
+  $(".action-dropdown").on("click", function () {
+    window.location.href = "./Top-10.html" + "?" + "action";
+  });
+
+  $(".romcom-dropdown").on("click", function () {
+    window.location.href = "Top-10.html" + "?" + "romance" + "?" + "comedy";
+  });
+
+  $(".drama-dropdown").on("click", function () {
+    window.location.href = "Top-10.html" + "?" + "drama";
+  });
+
+  pageload();
 });
