@@ -3,11 +3,8 @@
   font-family: "Lato", "Trebuchet MS", Helvetica, sans-serif; /* to test again */
 }
 
-body {
-  margin-top: 15px;
-  background-image: url("../img/woman-lying-in-bed-and-watching-TV.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
+.body-bg {
+  background: black;
 }
 
 h1,
