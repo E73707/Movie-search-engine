@@ -11,9 +11,12 @@
       href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../css/style.css"></link>
-    <link rel="stylesheet" href="../css/top-10.css"/>
-    <script src="https://kit.fontawesome.com/4f0b43d67b.js" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="../css/style.css"></link> -->
+    <link rel="stylesheet" href="../css/top-10.css" />
+    <script
+      src="https://kit.fontawesome.com/4f0b43d67b.js"
+      crossorigin="anonymous"
+    ></script>
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
   </head>
 
@@ -22,38 +25,65 @@
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
-            <img alt="website logo" width="120px" src="../img/what-to-watch-logo.png">
+            <img
+              alt="website logo"
+              width="120px"
+              src="../img/what-to-watch-logo.png"
+            />
           </a>
-          <button class="navbar-toggler text-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button
+            class="navbar-toggler text-end"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item mx-lg-3">
-                <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
+                <a
+                  class="nav-link active text-white"
+                  aria-current="page"
+                  href="#"
+                  >Home</a
+                >
               </li>
               <li class="nav-item mx-lg-3">
                 <a class="nav-link text-white" href="#">Menu</a>
               </li>
               <li class="nav-item mx-lg-3 dropdown">
-                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
-                  aria-expanded="false">
+                <a
+                  class="nav-link dropdown-toggle text-white"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
                   Dropdown
                 </a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="#">Action</a></li>
                   <li><a class="dropdown-item" href="#">Another action</a></li>
                   <li>
-                    <hr class="dropdown-divider">
+                    <hr class="dropdown-divider" />
                   </li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
                 </ul>
               </li>
             </ul>
             <div>
-              <a href="#search" data-bs-toggle="modal" data-bs-target="#searchModal">
-                <img src="../img/magnifying-glass.png" height="20px" alt="">
+              <a
+                href="#search"
+                data-bs-toggle="modal"
+                data-bs-target="#searchModal"
+              >
+                <img src="../img/magnifying-glass.png" height="20px" alt="" />
               </a>
             </div>
           </div>
@@ -67,7 +97,12 @@
           <h3>Genres</h3>
           <div class="genre-tags"></div>
           <div>
-            <button class="findBtn">find movies</button>
+            <button
+              class="btn btn-primary findBtn"
+              style="--bs-btn-padding-y: 0.25rem; --bs-btn-padding-x: 0.5rem"
+            >
+              find movies
+            </button>
           </div>
         </div>
         <div class="slidecontainer">
@@ -90,12 +125,30 @@
         <section id="container"></section>
       </div>
     </div>
-    <div id="video"></div>
-    <div>
-      <button class="testBtn">
-        test
-      </button>
+    <!-- <button
+      type="button"
+      class="btn btn-primary"
+      data-toggle="modal"
+      data-target="#exampleModalCenter"
+    >
+      Launch demo modal
+    </button> -->
+
+    <div
+      class="modal fade trailerModal"
+      id="exampleModalCenter"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div id="video"></div>
+        </div>
+      </div>
     </div>
+
     <!-- <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
