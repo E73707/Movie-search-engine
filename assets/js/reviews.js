@@ -9,7 +9,7 @@ var movieOverview = document.querySelector("#movie-overview");
 var releaseDate = document.querySelector("#release-date");
 var cast = document.querySelector("#cast");
 var addressUrl = document.location.href;
-const apiKey = 'api_key=b3d061705cb162c0d2c4c93862143c72';
+const apiKey = "api_key=b3d061705cb162c0d2c4c93862143c72";
 
 //show reviews for movies clicked from top-10 html page
 if (addressUrl.includes("?")) {
@@ -24,7 +24,7 @@ input.keyup(function () {
   var movieName = input.val();
   if (movieName != "") {
     var availableNames = [];
-    var movieIDUrl =`https://api.themoviedb.org/3/search/movie?${apiKey}&query=${movieName}`;
+    var movieIDUrl = `https://api.themoviedb.org/3/search/movie?${apiKey}&query=${movieName}`;
     fetch(movieIDUrl)
       .then(function (response) {
         return response.json();
@@ -46,7 +46,7 @@ function getReviews() {
   getReady();
 
   var movieName = input.val();
-  var movieIDUrl =`https://api.themoviedb.org/3/search/movie?${apiKey}&query=${movieName}`;
+  var movieIDUrl = `https://api.themoviedb.org/3/search/movie?${apiKey}&query=${movieName}`;
   fetch(movieIDUrl)
     .then(function (response) {
       return response.json();
@@ -60,9 +60,9 @@ function getReviews() {
         for (var i = 0; i < data.results.length; i++) {
           if (data.results[i].title.toLowerCase() === movieName.toLowerCase()) {
             var movieId = data.results[i].id;
-            var reviewUrl =`https://api.themoviedb.org/3/movie/${movieId}/reviews?${apiKey}&language=en-US`;
-            var movieInfoUrl =`https://api.themoviedb.org/3/movie/${movieId}?${apiKey}&language=en-US`;
-            var castUrl =`https://api.themoviedb.org/3/movie/${movieId}/credits?${apiKey}`;
+            var reviewUrl = `https://api.themoviedb.org/3/movie/${movieId}/reviews?${apiKey}&language=en-US`;
+            var movieInfoUrl = `https://api.themoviedb.org/3/movie/${movieId}?${apiKey}&language=en-US`;
+            var castUrl = `https://api.themoviedb.org/3/movie/${movieId}/credits?${apiKey}`;
             urlArray.push(reviewUrl);
             urlArray.push(movieInfoUrl);
             urlArray.push(castUrl);
@@ -81,13 +81,21 @@ function getReviews() {
           var moviePoster = document.createElement("img");
           moviePoster.classList.add("img-fluid", "rounded-start");
           moviePoster.setAttribute("id", "movie-poster");
-          var movieImgUrl ="https://image.tmdb.org/t/p/w500/" + data.poster_path;
+          var movieImgUrl =
+            "https://image.tmdb.org/t/p/w500/" + data.poster_path;
           moviePoster.setAttribute("src", movieImgUrl);
           moviePoster.setAttribute("alt", data.title);
           posterContainer.appendChild(moviePoster);
           movieTitle.textContent = data.title;
           movieOverview.textContent = "Overview: " + data.overview;
-          releaseDate.textContent ="Release date: " +data.release_date +" | Duration: " +data.runtime +"mins" +" | Rating: " +data.vote_average;
+          releaseDate.textContent =
+            "Release date: " +
+            data.release_date +
+            " | Duration: " +
+            data.runtime +
+            "mins" +
+            " | Rating: " +
+            data.vote_average;
           movieInfo.style.display = "block";
         });
       fetch(data[2])
@@ -112,18 +120,27 @@ function getReviews() {
             var errorMessage = document.createElement("div");
             errorMessage.classList.add("error-message");
             content.appendChild(errorMessage);
-            errorMessage.textContent ="Sorry, the review for this movie is not found";
+            errorMessage.textContent =
+              "Sorry, the review for this movie is not found";
           } else {
             console.log(data);
             for (var i = 0; i < data.results.length; i++) {
               var card = document.createElement("div");
               var cardHeader = document.createElement("div");
               var cardBody = document.createElement("div");
-              cardHeader.textContent =`By ${data.results[i].author}` +` posted at:${data.results[i].updated_at.split("T")[0]}`;
+              cardHeader.textContent =
+                `By ${data.results[i].author}` +
+                ` posted at:${data.results[i].updated_at.split("T")[0]}`;
               cardBody.textContent = data.results[i].content;
               card.classList.add("card", "card-review");
               cardHeader.classList.add("card-header");
-              cardBody.classList.add("card-body","border-dark","bg-light","mb-3","card-review");
+              cardBody.classList.add(
+                "card-body",
+                "border-dark",
+                "bg-light",
+                "mb-3",
+                "card-review"
+              );
               content.appendChild(card);
               card.appendChild(cardHeader);
               card.appendChild(cardBody);
@@ -153,3 +170,29 @@ function getReady() {
 
 //click event for the search button to the the reviews
 btn.addEventListener("click", getReviews);
+
+$(".dropdown-toggle").click(function () {
+  window.location.href = "Top-10.html";
+});
+
+let dropdownMenu = document.querySelector(".dropdown-menu");
+
+$(".dropdown").mouseover(function () {
+  dropdownMenu.classList.add("show");
+});
+
+$(".dropdown").mouseout(function () {
+  dropdownMenu.classList.remove("show");
+});
+
+$(".action-dropdown").on("click", function () {
+  window.location.href = "Top-10.html" + "?" + "action";
+});
+
+$(".romcom-dropdown").on("click", function () {
+  window.location.href = "Top-10.html" + "?" + "romance" + "?" + "comedy";
+});
+
+$(".drama-dropdown").on("click", function () {
+  window.location.href = "Top-10.html" + "?" + "drama";
+});

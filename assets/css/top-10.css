@@ -5,11 +5,12 @@
 }
 
 body {
-  margin-top: 15px;
   background-image: url("../img/woman-lying-in-bed-and-watching-TV.jpg");
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
+  min-height: 800px;
+  padding-top: 100px;
 }
 
 h1,
@@ -259,7 +260,6 @@ input[type="checkbox"] {
   margin-top: -7%;
   margin-left: 5%;
   border-radius: 32px;
-  z-index: 2;
   padding: 3%;
   font-weight: 700;
 }
