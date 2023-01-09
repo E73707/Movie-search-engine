@@ -234,6 +234,30 @@ $(function () {
     output.innerHTML = this.value;
   };
 
+  // when this function is activated by the trailer click event, it takes the movieID as an argument and creates a player which automatically plays the youtube video within a popup modal
+  function loadVideo(name) {
+    window.YT.ready(function () {
+      player = new window.YT.Player("video", {
+        height: "390",
+        width: "640",
+        videoId: name,
+        events: {
+          onReady: onPlayerReady,
+          onStateChange: onPlayerStateChange,
+        },
+      });
+    });
+
+    function onPlayerReady(event) {
+      event.target.playVideo();
+    }
+
+    function onPlayerStateChange(event) {
+      var videoStatuses = Object.entries(window.YT.PlayerState);
+      console.log(videoStatuses.find((status) => status[1] === event.data)[0]);
+    }
+  }
+
   // Adds click handler to trailer button, and uses the title appended to the trailer button as a value value to search using the youtube API for the id of the video that is most relevant. (id comes in a format of random numbers and letters)
   $(document).on("click", $(".trailerBtn"), function (event) {
     event.preventDefault();
@@ -264,29 +288,29 @@ $(function () {
     }
   });
 
-  // when this function is activated by the trailer click event, it takes the movieID as an argument and creates a player which automatically plays the youtube video within a popup modal
-  function loadVideo(name) {
-    window.YT.ready(function () {
-      player = new window.YT.Player("video", {
-        height: "390",
-        width: "640",
-        videoId: name,
-        events: {
-          onReady: onPlayerReady,
-          onStateChange: onPlayerStateChange,
-        },
-      });
-    });
+  // // when this function is activated by the trailer click event, it takes the movieID as an argument and creates a player which automatically plays the youtube video within a popup modal
+  // function loadVideo(name) {
+  //   window.YT.ready(function () {
+  //     player = new window.YT.Player("video", {
+  //       height: "390",
+  //       width: "640",
+  //       videoId: name,
+  //       events: {
+  //         onReady: onPlayerReady,
+  //         onStateChange: onPlayerStateChange,
+  //       },
+  //     });
+  //   });
 
-    function onPlayerReady(event) {
-      event.target.playVideo();
-    }
+  //   function onPlayerReady(event) {
+  //     event.target.playVideo();
+  //   }
 
-    function onPlayerStateChange(event) {
-      var videoStatuses = Object.entries(window.YT.PlayerState);
-      console.log(videoStatuses.find((status) => status[1] === event.data)[0]);
-    }
-  }
+  //   function onPlayerStateChange(event) {
+  //     var videoStatuses = Object.entries(window.YT.PlayerState);
+  //     console.log(videoStatuses.find((status) => status[1] === event.data)[0]);
+  //   }
+  // }
 
   // removes old player when exiting modal
   $("#exampleModalCenter").on("hidden.bs.modal", function (e) {
