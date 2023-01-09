@@ -15,7 +15,6 @@ const container=document.getElementById('movie')
 var fetchButton = document.getElementById('fetch-button');
 
 
-
 var error=true
 var selectEl =document.getElementById("format-input");
 selectEl.addEventListener("change",()=>{
@@ -33,7 +32,6 @@ selectEl.addEventListener("change",()=>{
   container.innerHTML="";  
  } 
 })
-
 
 
 const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
@@ -54,7 +52,6 @@ const alert = (message, type) => {
 }
 
 const alertTrigger = document.getElementById('liveAlertBtn')
-
 
 
 
@@ -103,7 +100,6 @@ function showMovies(data){
 
 }
 
-
 fetchButton.addEventListener('click',getData)
 
 $(".dropdown-toggle").click(function () {
@@ -131,3 +127,28 @@ $(".romcom-dropdown").on("click", function () {
 $(".drama-dropdown").on("click", function () {
   window.location.href = "Top-10.html" + "?" + "drama";
 });
+
+$(".dropdown-menu").mouseover(function () {
+  dropdownMenu.classList.add("show");
+  this.style.backgroundColor = "white";
+});
+
+var dropdown = document.querySelector(".dropdown");
+var dropdownItem = document.querySelectorAll(".dropdown-item");
+for (var i = 0; i < dropdownItem.length;i++) { 
+  dropdownItem[i].addEventListener("mouseover", function (event) {
+    dropdown.style.backgroundColor = "rgb(60, 119, 151)";
+    dropdown.style.borderRadius = "5px";
+    dropdownMenu.style.backgroundColor = "white";
+    event.target.style.borderRadius = "0px";
+    event.target.style.backgroundColor = "rgb(234, 237, 237)";
+  });
+  dropdownItem[i].addEventListener("mouseout", function (event) {
+    dropdown.style.backgroundColor = "rgb(60, 119, 151)";
+    dropdown.style.borderRadius = "5px";
+    event.target.style.backgroundColor = "white";
+    dropdown.style.backgroundColor = "";
+  });
+}
+
+
