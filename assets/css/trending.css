@@ -1,49 +1,52 @@
 * {
-    margin: 0px;
-    font-family: 'Lato', 'Trebuchet MS', Helvetica, sans-serif; 
-      /* --secondary-color: #1ED269; */
-      --secondary-color: #43AA8B;
-      --orange: chocolate;
-      --orange-hover: #E4843F;
-      --blue: #1E87D2;
+  margin: 0px;
+  font-family: "Lato", "Trebuchet MS", Helvetica, sans-serif;
+  /* --secondary-color: #1ED269; */
+  --secondary-color: #43aa8b;
+  --orange: chocolate;
+  --orange-hover: #e4843f;
+  --blue: #1e87d2;
 }
-
 
 body {
-    margin-top: 15px;
-    background-image: url('/assets/img/woman-lying-in-bed-and-watching-TV.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
+  margin-top: 15px;
+  background-image: url("../img/woman-lying-in-bed-and-watching-TV.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
-h1, h2, h3, h4, h5{
-    color: white;   
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: white;
 }
 h1 {
-    font-size: 2.25rem;
+  font-size: 2.25rem;
 }
 
 h2 {
-    font-size: 2rem;
-    font-weight: 700;
+  font-size: 2rem;
+  font-weight: 700;
 }
 
 h3 {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 h4 {
-    font-size: 1.25rem;
-    font-weight: 700;
+  font-size: 1.25rem;
+  font-weight: 700;
 }
 
 h5 {
-    font-size: 1.1rem;
-    font-weight: 700;
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 
-
 p {
-    font-size: 1rem;
-    margin-bottom: 0;
-    margin-left: 0.5rem;
+  font-size: 1rem;
+  margin-bottom: 0;
+  margin-left: 0.5rem;
 }
