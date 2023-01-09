@@ -60,10 +60,10 @@ p {
     background-color: rgb(60, 119, 151);
 }
 
-/* #nav-reviews:active {
+#home-menu:active {
     border-radius: 5px;
     background-color: rgb(31, 81, 107);
-} */
+}
 
 #search-button {
     border-radius: 10px;
