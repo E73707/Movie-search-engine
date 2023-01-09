@@ -1,3 +1,109 @@
+* {
+  margin: 0px;
+  font-family: "Lato", "Trebuchet MS", Helvetica, sans-serif;
+  /* to test again */
+}
+
+body {
+  background-image: url("../img/woman-lying-in-bed-and-watching-TV.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 800px;
+  padding-top: 100px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  color: white;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+h5 {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+p {
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+#search-button {
+  border-radius: 10px;
+  font-weight: 700;
+  width: 70px;
+  height: 100%;
+  color: white;
+  background: #1e87d2;
+  border: none;
+}
+
+#search-button:hover {
+  border: 1px solid white;
+}
+
+#search-button:active {
+  background: rgb(39 76 103);
+}
+
+#advanced-search-text,
+.text-link {
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+#advanced-search-text:hover,
+.text-link:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+.navbar-toggler-icon {
+  background-image: url("../img/white-hamburger-btn.png");
+}
+
+#navbar-toggler-border-color {
+  border-color: white;
+}
+
+.modal-content {
+  border: none;
+}
+
+/* Jquery slider */
+.ui-widget-header {
+  background-color: #1ed269 !important;
+}
+
+/* custom filter checkbox */
+input[type="checkbox"] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
 .card {
   padding: 0px;
   text-align: center;
@@ -7,6 +113,8 @@
   margin-top: 40px;
   position: relative;
   border-radius: 30px;
+  background-color: #22303c !important;
+  color: white;
 }
 
 @media screen and (max-width: 600px) {
@@ -24,6 +132,7 @@
 }
 
 #container {
+  /* background-color: #22303c; */
   align-self: center;
   margin: 50px;
   display: flex;
@@ -121,19 +230,22 @@
 }
 
 .overview {
-  color: black;
+  margin: 10px;
+  padding: 10px;
+  text-align: left;
 }
 .overviewP {
-  color: black;
+  /* color: black; */
   font-size: small;
 }
 
 .innerCardDiv {
   padding: 0px;
-  margin: 10px;
-  margin-top: 40px;
+  /* margin: 10px; */
+
   position: relative;
   border-radius: 30px;
+  background-color: #22303c;
 }
 
 .movieImage {
@@ -143,17 +255,21 @@
 
 .rating {
   position: absolute;
-  background-color: white;
+  background-color: #22303c;
   border-style: solid, black, 1px;
   margin-top: -7%;
   margin-left: 5%;
   border-radius: 32px;
-  z-index: 2;
   padding: 3%;
+  font-weight: 700;
 }
 
 .reviewsBtnDiv {
   position: absolute;
   margin-top: -145%;
   margin-left: 5%;
+}
+
+.trailerBtn {
+  margin-bottom: 15%;
 }
