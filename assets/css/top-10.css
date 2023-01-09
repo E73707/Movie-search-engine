@@ -273,3 +273,12 @@ input[type="checkbox"] {
 .trailerBtn {
   margin-bottom: 15%;
 }
+.nav-item :hover {
+  border-radius: 5px;
+  background-color: rgb(60, 119, 151);
+}
+
+#top-10id {
+  border-radius: 5px;
+  background-color: rgb(31, 81, 107);
+}

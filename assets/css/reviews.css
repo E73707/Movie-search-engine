@@ -59,124 +59,12 @@ p {
     margin-bottom: 0;
 }
 
-#search-button {
-    border-radius: 10px;
-    font-weight: 700;
-    width: 70px;
-    height: 100%;
-    color: white;
-    background: var(--blue);
-    border: none;
-}
-
-#search-button:hover {
-    border: 1px solid white;
-}
-
-#search-button:active {
-    background: rgb(39 76 103)
-}
-
-#advanced-search-text,
-.text-link {
-    color: white;
-    text-decoration: none;
-    font-size: 0.9rem;
-}
-
-#advanced-search-text:hover,
-.text-link:hover {
-    text-decoration: underline;
-    color: white;
-}
-
-.trailer-btn {
-    background: var(--orange);
-    width: fit-content;
-    color: white;
-    font-weight: 700;
-}
-
-.trailer-btn:hover {
-    /* background: #DD1155; */
-    background: #E4843F;
-    color: white;
-}
-
-.reviews-btn {
-    background: var(--secondary-color);
-    width: fit-content;
-    color: white;
-    font-weight: 700;
-}
-
-.reviews-btn:hover {
-    /* background: #DD1155; */
-    background: var(--orange-hover);
-    color: white;
-}
-
 .navbar-toggler-icon {
     background-image: url('../img/white-hamburger-btn.png');
 }
 
 #navbar-toggler-border-color {
     border-color: white;
-}
-
-.modal-content {
-    border: none;
-}
-
-/* Jquery slider */
-.ui-widget-header {
-    background-color: var(--secondary-color) !important;
-}
-
-/* custom filter checkbox */
-input[type=checkbox] {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-input[type=checkbox]:checked+label {
-    background: var(--secondary-color);
-    color: white;
-}
-
-.genre-checkbox {
-    padding: 5px 10px;
-    border-radius: 12px;
-    border: none;
-    background: var(--orange);
-    color: white;
-    cursor: pointer;
-    transition: all .3s;
-}
-
-.genre-checkbox:hover {
-    background: var(--orange-hover)
-}
-
-.card-img-resize {
-    width: auto;
-    height: 500px;
-    object-fit: cover;
-}
-
-.icon-scroll-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--blue);
-    box-shadow: 1px 1px 5px rgb(252, 221, 221);
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
 }
 
 /* Custom Responsive Screen */
@@ -211,7 +99,7 @@ input[type=checkbox]:checked+label {
 }
 
 #review-content {
-    width: 1000px;
+    max-width: 1000px;
 }
 
 #input-box-holder {
@@ -278,4 +166,14 @@ input[type=checkbox]:checked+label {
 
 .card-review {
     background-color: rgb(237, 245, 248) !important;
+}
+
+.nav-item :hover {
+    border-radius: 5px;
+    background-color: rgb(60, 119, 151);
+}
+
+#nav-reviews {
+    border-radius: 5px;
+    background-color: rgb(31, 81, 107);
 }
