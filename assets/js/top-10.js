@@ -156,7 +156,6 @@ $(function () {
               cardOverviewP.classList.add("overviewP");
               cardOverviewP.textContent = data.results[i].overview;
               let overviewList = cardOverviewP.textContent.split(" ");
-              // console.log(shortDescGenerator(overviewList));
               cardCont.textContent = data.results[i].title;
               cardImg.setAttribute("src", imgUrl);
               cardImg.setAttribute("alt", data.results[i].title);
@@ -288,30 +287,6 @@ $(function () {
     }
   });
 
-  // // when this function is activated by the trailer click event, it takes the movieID as an argument and creates a player which automatically plays the youtube video within a popup modal
-  // function loadVideo(name) {
-  //   window.YT.ready(function () {
-  //     player = new window.YT.Player("video", {
-  //       height: "390",
-  //       width: "640",
-  //       videoId: name,
-  //       events: {
-  //         onReady: onPlayerReady,
-  //         onStateChange: onPlayerStateChange,
-  //       },
-  //     });
-  //   });
-
-  //   function onPlayerReady(event) {
-  //     event.target.playVideo();
-  //   }
-
-  //   function onPlayerStateChange(event) {
-  //     var videoStatuses = Object.entries(window.YT.PlayerState);
-  //     console.log(videoStatuses.find((status) => status[1] === event.data)[0]);
-  //   }
-  // }
-
   // removes old player when exiting modal
   $("#exampleModalCenter").on("hidden.bs.modal", function (e) {
     player.destroy();
@@ -329,22 +304,22 @@ $(function () {
     window.location.href = "trending.html";
   });
 
-  $(".dropdown-toggle").click(function () {
+  $(".dropdown-toggle-i").click(function () {
     window.location.href = "Top-10.html";
   });
 
   let dropdownMenu = document.querySelector(".dropdown-menu");
 
-  $(".dropdown").mouseover(function () {
+  $(".dropdown-i").mouseover(function () {
     dropdownMenu.classList.add("show");
   });
 
-  $(".dropdown-menu").mouseover(function () {
+  $(".dropdown-menu-i").mouseover(function () {
     dropdownMenu.classList.add("show");
     this.style.backgroundColor = "white";
   });
 
-  $(".dropdown").mouseout(function () {
+  $(".dropdown-i").mouseout(function () {
     dropdownMenu.classList.remove("show");
   });
 
