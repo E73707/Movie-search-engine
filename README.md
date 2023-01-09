@@ -40,8 +40,7 @@ whattowatch.fun is created with the following web technologies:
 --------------------------------------------------------
 
 ## Webpages, Key Features, Usage, and Limitations
-===================================================
-=======
+
 ### **1. Homepage (index.html)**
 The homepage is divided mainly into 3 sections:
 - Navigation Bar, which is also used in every other page
