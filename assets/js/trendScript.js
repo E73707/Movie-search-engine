@@ -34,9 +34,37 @@ selectEl.addEventListener("change",()=>{
  } 
 })
 
+
+
+const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+
+const alert = (message, type) => {
+  const wrapper = document.createElement('div')
+  wrapper.innerHTML = [
+    `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+    `   <div>${message}</div>`,
+    '</div>'
+  ].join('')
+
+  alertPlaceholder.append(wrapper)
+  $(".alert-dismissible").fadeTo(2000, 500).slideUp(500, function(){
+    $(".alert-dismissible").alert('close');
+});
+  
+}
+
+const alertTrigger = document.getElementById('liveAlertBtn')
+
+
+
+
+
+
 function getData(){
     if(error){
-        alert("select one of the options from the dropbox");
+        if (alertTrigger) {
+            alert('Please select one of the options!', 'danger')
+        }
         return;
       }
   fetch(selectedUrl).then(resp => resp.json()).then(data =>{
@@ -44,7 +72,6 @@ function getData(){
     showMovies(data.results);
   })
 }
-
 
 function showMovies(data){
     container.innerHTML='';
