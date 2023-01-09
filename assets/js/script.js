@@ -32,8 +32,8 @@ toTopBtn.onclick = () => {
 init();
 
 function init() {
-    loadLocalStore();
     advancedSearchTextClick();
+    loadLocalStore();
     renderGenreSelectionBtn();
     searchSubmit();
 }
@@ -229,15 +229,27 @@ function playTrailer(movieId, plot, movieTitle) {
         } else {
             let trailerHTML = `<iframe width="100%" height="500px" src="https://youtube.com/embed/${data.videoUrl.split('?v=')[1]}" alt="Movie Trailer"></iframe>
                                 <h4 class="my-2 px-3">${movieTitle}</h4>
-                                <h5 class="my-2 px-3">Plot Summary</h5>
+                                <p class="my-2 px-3 fw-bold">Plot Summary</p>
                                 <p class="px-3 pb-3">${plot}</p>`
             
             trailerModal.innerHTML = trailerHTML;
             enableMovieTrailerModal.show();
+            if(enableMovieTrailerModal.hide()){
+                console.log('hide trailer modal');
+            }
         }
     })
-    
 }
+
+// When the trailer modal is closed, stop playing the YouTube video (i.e., by removing the iframe)
+$('#trailer-modal').on('hide.bs.modal', function(e) {
+    $('#trailer-and-plot').children().remove();
+    console.log($('#trailer-and-plot').children());
+})
+
+$("#exampleModalCenter").on("hidden.bs.modal", function (e) {
+    player.destroy();
+  });
 
 function advancedSearchSubmit(advancedParam){
 
@@ -400,3 +412,22 @@ $(".romcom-dropdown").on("click", function () {
 $(".drama-dropdown").on("click", function () {
   window.location.href = "./assets/html/Top-10.html" + "?" + "drama";
 });
+
+// TODO: not working
+var dropdown = document.getElementsByClassName('dropdown');
+var dropdownItem = document.getElementsByClassName('dropdown-item');
+for (var i = 0; i < dropdownItem.length;i++) { 
+  dropdownItem[i].addEventListener("mouseover", (event)=>{
+    dropdown.style.backgroundColor = "rgb(60, 119, 151)";
+    dropdown.style.borderRadius = "5px";
+    dropdownMenu.style.backgroundColor = "white";
+    event.target.style.borderRadius = "0px";
+    event.target.style.backgroundColor = "rgb(234, 237, 237)";
+  });
+  dropdownItem[i].addEventListener("mouseout", (event)=>{
+    dropdown.style.backgroundColor = "rgb(60, 119, 151)";
+    dropdown.style.borderRadius = "5px";
+    event.target.style.backgroundColor = "white";
+    dropdown.style.backgroundColor = "";
+  })
+};
