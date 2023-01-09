@@ -326,7 +326,7 @@ $(function () {
   });
 
   $(".trending").on("click", function () {
-    window.location.href = "Upcomming.html";
+    window.location.href = "trending.html";
   });
 
   $(".dropdown-toggle").click(function () {
@@ -337,6 +337,11 @@ $(function () {
 
   $(".dropdown").mouseover(function () {
     dropdownMenu.classList.add("show");
+  });
+
+  $(".dropdown-menu").mouseover(function () {
+    dropdownMenu.classList.add("show");
+    this.style.backgroundColor = "white";
   });
 
   $(".dropdown").mouseout(function () {
