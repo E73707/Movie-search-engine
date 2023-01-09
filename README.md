@@ -211,6 +211,11 @@ The movie's information card contains a poster, the movie's name, release date, 
 </p>
 --------------------------------------------------------
 ## **Directions for Future Development**
+- UX/UI – pagination on search results
+- Additional search filter options
+- Identification of online video streaming service providers that has API available (Note: NetFlix or Binge do not provide APIs)
+- User-generated reviews either to wheretowatch.fun or the API websites made possible
+- Proper consumer/user research to make sure that the UX/UI and functionality really satisfy their needs
 
 --------------------------------------------------------
 ## **Credits (Alphabetical Order):**
