@@ -210,6 +210,7 @@ The movie's information card contains a poster, the movie's name, release date, 
     <img src=./assets/img/readme/reviews-content.png>
 </p>
 --------------------------------------------------------
+
 ## **Directions for Future Development**
 - UX/UI – pagination on search results
 - Additional search filter options
