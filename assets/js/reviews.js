@@ -81,21 +81,13 @@ function getReviews() {
           var moviePoster = document.createElement("img");
           moviePoster.classList.add("img-fluid", "rounded-start");
           moviePoster.setAttribute("id", "movie-poster");
-          var movieImgUrl =
-            "https://image.tmdb.org/t/p/w500/" + data.poster_path;
+          var movieImgUrl ="https://image.tmdb.org/t/p/w500/" + data.poster_path;
           moviePoster.setAttribute("src", movieImgUrl);
           moviePoster.setAttribute("alt", data.title);
           posterContainer.appendChild(moviePoster);
           movieTitle.textContent = data.title;
           movieOverview.textContent = "Overview: " + data.overview;
-          releaseDate.textContent =
-            "Release date: " +
-            data.release_date +
-            " | Duration: " +
-            data.runtime +
-            "mins" +
-            " | Rating: " +
-            data.vote_average;
+          releaseDate.textContent ="Release date: " +data.release_date +" | Duration: " +data.runtime + "mins" +" | Rating: " +data.vote_average;
           movieInfo.style.display = "block";
         });
       fetch(data[2])
@@ -194,3 +186,22 @@ $(".romcom-dropdown").on("click", function () {
 $(".drama-dropdown").on("click", function () {
   window.location.href = "Top-10.html" + "?" + "drama";
 });
+
+//add style for mouse over top-10 tags dropdown menu
+var dropdown = document.querySelector(".dropdown");
+var dropdownItem = document.querySelectorAll(".dropdown-item");
+for (var i = 0; i < dropdownItem.length;i++) { 
+  dropdownItem[i].addEventListener("mouseover", function (event) {
+    dropdown.style.backgroundColor = "rgb(60, 119, 151)";
+    dropdown.style.borderRadius = "5px";
+    dropdownMenu.style.backgroundColor = "white";
+    event.target.style.borderRadius = "0px";
+    event.target.style.backgroundColor = "rgb(234, 237, 237)";
+  });
+  dropdownItem[i].addEventListener("mouseout", function (event) {
+    dropdown.style.backgroundColor = "rgb(60, 119, 151)";
+    dropdown.style.borderRadius = "5px";
+    event.target.style.backgroundColor = "white";
+    dropdown.style.backgroundColor = "";
+  });
+}
