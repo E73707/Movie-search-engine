@@ -15,7 +15,7 @@
 
 #homepage-bg-img {
     background-image: url('../img/woman-deciding-what-to-watch.jpg');
-    background-attachment: fixed;
+    background-attachment: fixed; /* to maintain image size when Advanced Search filters container is displayed */
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 800px;
@@ -53,6 +53,16 @@ p {
     font-size: 1rem;
     margin-bottom: 0;
 }
+
+.nav-item:hover {
+    border-radius: 5px;
+    background-color: rgb(60, 119, 151);
+}
+
+/* #nav-reviews:active {
+    border-radius: 5px;
+    background-color: rgb(31, 81, 107);
+} */
 
 #search-button {
     border-radius: 10px;
@@ -179,17 +189,9 @@ input[type=checkbox]:checked + label {
     }
 }
 
-@media (max-width: 1024px) {
-    #homepage-bg-img {
-        background-attachment: fixed;
-        background-position-x: -100px;
-    }
-}
-
 @media (max-width: 992px) {
     #homepage-bg-img {
-        background-attachment: fixed;
-        background-position-x: -100px;
+        background-position-x: -175px;
     }
 }
 

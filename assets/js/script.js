@@ -8,9 +8,26 @@ const today = dayjs().format('YYYY-MM-DD');
 const errorModal = new bootstrap.Modal(document.getElementById('api-error-modal'));
 const apiErrorMsg = document.getElementById('api-error-message')
 const errorMsgHeadline = document.getElementById('error-message-headline');
+const toTopBtn = document.getElementById('to-top-btn');
 
 let broadSearch250 = {}
 let advancedSearchShow = false;
+
+// Scroll-to-Top Button
+var scrollThreshold = 400;
+
+window.onscroll = () => {
+    if(document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+        toTopBtn.classList.remove('d-none');
+    } else {
+        toTopBtn.classList.add('d-none');
+    }
+}
+
+toTopBtn.onclick = () => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
 
 init();
 
@@ -18,7 +35,7 @@ function init() {
     loadLocalStore();
     advancedSearchTextClick();
     renderGenreSelectionBtn();
-    SearchSubmit();
+    searchSubmit();
 }
 
 function loadLocalStore() {
@@ -26,10 +43,13 @@ function loadLocalStore() {
     if (localStoreBroadSearch250 !== null) {
         broadSearch250 = localStoreBroadSearch250;
         renderSearchResults(broadSearch250.result);
+    } else {
+        let normalSearchQuery = [""];
+        searchMoviePlot(normalSearchQuery);
     }
 }
 
-function SearchSubmit() {
+function searchSubmit() {
     searchBtn.addEventListener('click', () => {
         const rawSearchQuery = keywordSearchQueryBox.value.replace(',',' ').replace('.',' ').trim().split(' '); // e.g. "gun,  war " => ['gun', '', '', 'war']
         const loadingSpinner = document.getElementById('loading-spinner');
@@ -43,6 +63,8 @@ function SearchSubmit() {
                 normalSearchQuery.push(rawSearchQuery[i]);
             }
         }
+
+        console.log(normalSearchQuery);
 
         searchResultHeading.innerText = 'Search Results';
 
@@ -109,7 +131,7 @@ function searchMoviePlot(normalSearchQuery) {
                 }
             })
             .catch(function(err) {
-                errorMsgHeadline.innerText = `${response.status} Error` // TODO: check if its' working
+                errorMsgHeadline.innerText = `${response.status} Error`
                 apiErrorMsg.innerText = err;
                 errorModal.show();
             })
@@ -143,12 +165,6 @@ function searchMoviePlot(normalSearchQuery) {
 
 function renderSearchResults(filterPlotList) {
     const loadingSpinner = document.getElementById('loading-spinner');
-    // let html = `
-    // <li class="page-item disabled">
-    //   <a class="page-link">Previous</a>
-    // </li>
-    // 
-    // for 
     
     for (var i = 0; i < filterPlotList.length; i++) {
         let movieId = filterPlotList[i].id;
@@ -199,7 +215,7 @@ function playTrailer(movieId, plot, movieTitle) {
         }
     })
     .catch(function(err) {
-        errorMsgHeadline.innerText = `${response.status} Error` // TODO: check if its' working
+        errorMsgHeadline.innerText = `${response.status} Error`
         apiErrorMsg.innerText = err;
         errorModal.show();
     })
@@ -218,7 +234,6 @@ function playTrailer(movieId, plot, movieTitle) {
             
             trailerModal.innerHTML = trailerHTML;
             enableMovieTrailerModal.show();
-            // trailerModal.insertAdjacentHTML('beforeend', trailerHTML)
         }
     })
     
@@ -233,8 +248,10 @@ function advancedSearchSubmit(advancedParam){
     const minUserVotes = advancedParam.userVotes[0];
     const maxUserVotes = advancedParam.userVotes[1];
     const genreArray = advancedParam.genre.toString();
-    const plotSearch = advancedParam.searchQuery;
+    const plotSearchQuery = advancedParam.searchQuery;
     const runtime = advancedParam.duration;
+
+    console.log(genreArray);
 
     fetch(`https://imdb-api.com/API/AdvancedSearch/k_lyhir636?title_type=feature&user_rating=${minUserRating},${maxUserRating}&release_date=${minYear},${maxYear}&num_votes=${minUserVotes},${maxUserVotes}&genres=${genreArray}&languages=en&count=250&sort=user_rating,desc`)
     .then(function(response){
@@ -247,7 +264,7 @@ function advancedSearchSubmit(advancedParam){
         }
     })
     .catch(function(err) {
-        errorMsgHeadline.innerText = `${response.status} Error` // TODO: check if its' working
+        errorMsgHeadline.innerText = `${response.status} Error`
         apiErrorMsg.innerText = err;
         errorModal.show();
     })
@@ -270,9 +287,9 @@ function advancedSearchSubmit(advancedParam){
                     if(data.results[i].runtimeStr !== null) { // In some data objects, runtimeStr and/or plot value is null. This app is designed to exclude these objects from the advancedFilterList array.
                         let runtimeData = Number(data.results[i].runtimeStr.split(' ')[0]);
                         if(runtimeData >= Number(runtime[0]) && runtimeData <= Number(runtime[1])) {
-                            if(plotSearch.length !== 0) {
-                                for (var j = 0; j < plotSearch.length; j++) {
-                                    if (data.results[i].plot !== null && data.results[i].plot.search(plotSearch[j]) !== -1) {
+                            if(plotSearchQuery.length !== 0) {
+                                for (var j = 0; j < plotSearchQuery.length; j++) {
+                                    if (data.results[i].plot !== null && data.results[i].plot.search(plotSearchQuery[j]) !== -1) {
                                         const foundIndex = advancedFilterList.findIndex((item) => { // This is to prevent duplicates in advancedFilterList array.
                                             return item.id == data.results[i].id;
                                         })
@@ -281,8 +298,10 @@ function advancedSearchSubmit(advancedParam){
                                         }
                                     }
                                 }
-                            }
-                            
+                            } else {
+                                console.log('No keyword search.')
+                                advancedFilterList.push(data.results[i]);
+                            }   
                         }
                     }
                 }
@@ -322,7 +341,7 @@ $(document).ready(function() {
         min: 60,
         max: 300,
         values: [90, 180],
-        slide: function( event, ui ) { // is event necessary here?
+        slide: function( event, ui ) {
           $( "#duration-label" ).html(ui.values[0] + " - " + ui.values[1] + "min");
         }
     });
@@ -333,9 +352,10 @@ $(document).ready(function() {
     $( "#user-rating-slider-range" ).slider({
         range: true,
         min: 1,
+        step: 0.5,
         max: 10,
         values: [8, 10],
-        slide: function( event, ui ) { // is event necessary here?
+        slide: function( event, ui ) {
           $( "#user-rating-label" ).html(ui.values[0] + " to " + ui.values[1]);
         }
     });
@@ -348,7 +368,7 @@ $(document).ready(function() {
         min: 1940,
         max: dayjs().format('YYYY'),
         values: [2012, dayjs().format('YYYY')],
-        slide: function( event, ui ) { // is event necessary here?
+        slide: function( event, ui ) {
           $( "#year-release-label" ).html(ui.values[0] + " to " + ui.values[1]);
         }
     });
