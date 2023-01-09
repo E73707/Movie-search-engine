@@ -10,7 +10,7 @@
 
 body {
   margin-top: 15px;
-  background-image: url("../img/woman-lying-in-bed-and-watching-TV.jpg");
+  background-image: url("../img/woman-deciding-what-to-watch.jpg");
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
@@ -50,3 +50,19 @@ p {
   margin-bottom: 0;
   margin-left: 0.5rem;
 }
+
+.nav-item :hover {
+  border-radius: 5px;
+  background-color: rgb(60, 119, 151);
+}
+
+#top-10id {
+  border-radius: 5px;
+  background-color: rgb(31, 81, 107);
+}
+.dropdown-menu :hover{
+  background-color: white;
+}
+
+
+
