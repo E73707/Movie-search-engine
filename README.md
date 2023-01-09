@@ -40,7 +40,8 @@ whattowatch.fun is created with the following web technologies:
 --------------------------------------------------------
 
 ## Webpages, Key Features, Usage, and Limitations
---------------------------------------------------------
+===================================================
+=======
 ### **1. Homepage (index.html)**
 The homepage is divided mainly into 3 sections:
 - Navigation Bar, which is also used in every other page
@@ -76,9 +77,9 @@ The simple search functionality employs a logical disjunction (i.e., equivalent 
 
 ***Note:*** As IMDB AdvancedSearch API doesn't seem to fetch accurate data when it comes to keyword search, the following step-by-step workaround is deployed instead.
 
-**Step 1: Reformat the search query** - Taking into account of the possibility of extra space, comma, and period anywhere within a search query string, it is necessary to reformat the string with replace(), trim(), and split() as shown on Line 51 in script.js file. The original search query string would then be converted to a new array of strings.
+**Step 1: Reformat the search query** - Taking into account of the possibility of extra space, comma, and period anywhere within a search query string, it is necessary to reformat the string with replace(), trim(), and split() as shown on Line 53 in script.js file. The original search query string would then be converted to a new array of strings.
 
-**Step 2: Push only a non-empty string into normalSearchQuery array, which is then sent to searchMoviePlot function** - Only non-empty strings are useful in keyword search, and this is achieved by the use of conditional statement on Line 59-60 in script.js file.
+**Step 2: Push only a non-empty string into normalSearchQuery array, which is then sent to searchMoviePlot function** - Only non-empty strings are useful in keyword search, and this is achieved by the use of conditional statement on Line 61-62 in script.js file.
 
 **Step 3: Fetch API data and finish the search** 
 
@@ -103,7 +104,7 @@ When 'Advanced Search' text link is clicked, the following filter options would 
 
 - User Ratings -- Users can search for feature films with user ratings between 1-10. Movies with no rating would not be returned in the search results. The default user ratings is set at 7-10.
 
-- Year Release -- Users can search for feature films with release year between 1940 to the present year. The present year is automatically adjusted with Day.js (i.e., line 362 in script.js). The default year release is set between 2012-present.
+- Year Release -- Users can search for feature films with release year between 1940 to the present year. The present year is automatically adjusted with Day.js (i.e., line 412 in script.js). The default year release is set between 2012-present.
 
 - User Votes -- Users can also refine their movie search further with the amount of user votes; the higher the amount, the more reliable the user rating is. Unlike in simple search, no default value for minimum and maximum user votes are set.
 

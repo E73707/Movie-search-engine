@@ -33,8 +33,8 @@ init();
 
 function init() {
     advancedSearchTextClick();
-    loadLocalStore();
     renderGenreSelectionBtn();
+    loadLocalStore();
     searchSubmit();
 }
 
@@ -44,8 +44,7 @@ function loadLocalStore() {
         broadSearch250 = localStoreBroadSearch250;
         renderSearchResults(broadSearch250.result);
     } else {
-        let normalSearchQuery = [""];
-        searchMoviePlot(normalSearchQuery);
+        fetchDefaultData();
     }
 }
 
@@ -113,6 +112,38 @@ function searchSubmit() {
             searchMoviePlot(normalSearchQuery);
         }
 
+    })
+}
+
+function fetchDefaultData() {
+    fetch(`https://imdb-api.com/API/AdvancedSearch/k_lyhir636?title_type=feature&user_rating=7.0,10&num_votes=50000,&languages=en&count=250&sort=user_rating,desc`)
+    .then(function(response){
+        if(response.status === 404){
+            throw new Error('API Not found');
+        } else if (response.status === 500){
+            throw new Error('API Server Error');
+        } else {
+            return response.json();
+        }
+    })
+    .catch(function(err) {
+        errorMsgHeadline.innerText = `${response.status} Error`
+        apiErrorMsg.innerText = err;
+        errorModal.show();
+    })
+    .then(function(data) {
+        if(!data){
+            return;
+        } else if (data.length === 0) { // i.e., if fetched data is an empty array
+            apiErrorMsg.innerText = 'Your search returns no result. Please try again';
+            errorModal.show();
+            return;
+        } else {
+            broadSearch250.timestamp = new Date();
+            broadSearch250.result = data.results;
+            localStorage.setItem('broadSearch250', JSON.stringify(broadSearch250))
+        }
+        renderSearchResults(broadSearch250.result);
     })
 }
 
@@ -354,7 +385,7 @@ $(document).ready(function() {
         max: 300,
         values: [90, 180],
         slide: function( event, ui ) {
-          $( "#duration-label" ).html(ui.values[0] + " - " + ui.values[1] + "min");
+          $( "#duration-label" ).html(ui.values[0] + "-" + ui.values[1] + " min");
         }
     });
 })
@@ -386,6 +417,8 @@ $(document).ready(function() {
     });
 })
 
+// Top-10s dropdown menus
+
 $(".dropdown-toggle").click(function () {
   window.location.href = "./assets/html/Top-10.html";
 });
@@ -412,22 +445,3 @@ $(".romcom-dropdown").on("click", function () {
 $(".drama-dropdown").on("click", function () {
   window.location.href = "./assets/html/Top-10.html" + "?" + "drama";
 });
-
-// TODO: not working
-var dropdown = document.getElementsByClassName('dropdown');
-var dropdownItem = document.getElementsByClassName('dropdown-item');
-for (var i = 0; i < dropdownItem.length;i++) { 
-  dropdownItem[i].addEventListener("mouseover", (event)=>{
-    dropdown.style.backgroundColor = "rgb(60, 119, 151)";
-    dropdown.style.borderRadius = "5px";
-    dropdownMenu.style.backgroundColor = "white";
-    event.target.style.borderRadius = "0px";
-    event.target.style.backgroundColor = "rgb(234, 237, 237)";
-  });
-  dropdownItem[i].addEventListener("mouseout", (event)=>{
-    dropdown.style.backgroundColor = "rgb(60, 119, 151)";
-    dropdown.style.borderRadius = "5px";
-    event.target.style.backgroundColor = "white";
-    dropdown.style.backgroundColor = "";
-  })
-};
