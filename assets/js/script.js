@@ -373,3 +373,30 @@ $(document).ready(function() {
         }
     });
 })
+
+$(".dropdown-toggle").click(function () {
+  window.location.href = "./assets/html/Top-10.html";
+});
+
+let dropdownMenu = document.querySelector(".dropdown-menu");
+
+$(".dropdown").mouseover(function () {
+  dropdownMenu.classList.add("show");
+});
+
+$(".dropdown").mouseout(function () {
+  dropdownMenu.classList.remove("show");
+});
+
+$(".action-dropdown").on("click", function () {
+  window.location.href = "./assets/html/Top-10.html" + "?" + "action";
+});
+
+$(".romcom-dropdown").on("click", function () {
+  window.location.href =
+    "./assets/html/Top-10.html" + "?" + "romance" + "?" + "comedy";
+});
+
+$(".drama-dropdown").on("click", function () {
+  window.location.href = "./assets/html/Top-10.html" + "?" + "drama";
+});
