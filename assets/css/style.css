@@ -60,7 +60,7 @@ p {
     background-color: rgb(60, 119, 151);
 }
 
-#home-menu:active {
+#home-menu {
     border-radius: 5px;
     background-color: rgb(31, 81, 107);
 }
