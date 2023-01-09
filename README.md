@@ -2,6 +2,7 @@
 If you've frequently spent more time that you're supposed to (e.g. half an hour or more) browsing through movie selections on NetFlix, Binge, or any other video streaming services, and still can't decide what exactly you want to watch, you're not alone. While existing movie search websites, such as imdb.com also provides advanced search functionality, their extensive search filter options can be quite overwhelming and time-consuming as users have to decide what search parameters actually matter to them. whattowatch.fun aims to provide a more simplified movie search solution that limit the number of search parameters to the ones that matter the most to general audience, including movie plot, genre, runtime, year release, and user votes. Presets of filter search, such as Top 10s and Trending movies are also provided for even quicker search.
 
 --------------------------------------------------------
+
 ## Table of Contents
 - URLs
 - User Story
@@ -12,15 +13,13 @@ If you've frequently spent more time that you're supposed to (e.g. half an hour 
 - Credits
 
 --------------------------------------------------------
+
 ## URLs
 - [Deployed Application URL](https://e73707.github.io/Movie-search-engine/)
 - [GitHub Repository URL](https://github.com/E73707/Movie-search-engine)
 
 --------------------------------------------------------
-## User Story
 
-
---------------------------------------------------------
 ## Technologies
 whattowatch.fun is created with the following web technologies:
 - HTML
@@ -32,15 +31,16 @@ whattowatch.fun is created with the following web technologies:
 - localStorage client-side storage
 
 --------------------------------------------------------
+
 ## APIs
 - imdb-api.com
 - api.themoviedb.org
 - youtube.googleapis.com
 
 --------------------------------------------------------
-## Webpages, Key Features, Usage, and Limitations
-=================================================
 
+## Webpages, Key Features, Usage, and Limitations
+--------------------------------------------------------
 ### **1. Homepage (index.html)**
 The homepage is divided mainly into 3 sections:
 - Navigation Bar, which is also used in every other page
@@ -209,6 +209,7 @@ The movie's information card contains a poster, the movie's name, release date, 
 <p>
     <img src=./assets/img/readme/reviews-content.png>
 </p>
+
 --------------------------------------------------------
 
 ## **Directions for Future Development**
@@ -219,6 +220,7 @@ The movie's information card contains a poster, the movie's name, release date, 
 - Proper consumer/user research to make sure that the UX/UI and functionality really satisfy their needs
 
 --------------------------------------------------------
+
 ## **Credits (Alphabetical Order):**
 - Eddie Vaughan
 - Majid Pourkazemi
