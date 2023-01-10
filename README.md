@@ -248,15 +248,17 @@ The movie's information card contains a poster, the movie's name, release date, 
 --------------------------------------------------------
 
 ## **Directions for Future Development**
-- UX/UI – pagination on search results
-- Additional search filter options
-- Identification of online video streaming service providers that has API available (Note: NetFlix or Binge do not provide APIs)
-- User-generated reviews either to wheretowatch.fun or the API websites made possible
-- Proper consumer/user research to make sure that the UX/UI and functionality really satisfy their needs
+- To improve UX/UI – pagination on search results
+- To add more search filter options + search presets (e.g. more Top 10 submenus, trending submenus)
+- To cover searches on productions other than feature film, e.g. TV series, documentary, etc. 
+- To identify online video streaming service(s) that also provide API data (Note: NetFlix or Binge do not provide APIs)
+- To conduct proper consumer/user research to make sure that the UX/UI and functionality really satisfy the needs of targeted users
+- To save relatively static data (e.g. movie trailer ID and YouTube link) to localStorage to optimize the number of API calls
+- To allow users to public their own reviews either to wheretowatch.fun or to the API websites via the web application
 
 --------------------------------------------------------
 
-## **Credits (Alphabetical Order):**
+## **Credits (in Alphabetical Order):**
 - Eddie Vaughan
 - Majid Pourkazemi
 - Piyawit Teeraprasert
