@@ -58,7 +58,7 @@ function searchSubmit() {
 
         let normalSearchQuery = []; // This is a new array that excludes empty strings
         for (var i = 0; i < rawSearchQuery.length; i++) {
-            if(rawSearchQuery[i] !== ' ') { // This conditional statement accounts for possible empty strings, i.e., only push non-empty strings
+            if(rawSearchQuery[i] !== '') { // This conditional statement accounts for possible empty strings, i.e., only push non-empty strings
                 normalSearchQuery.push(rawSearchQuery[i]);
             }
         }
